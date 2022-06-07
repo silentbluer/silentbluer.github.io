@@ -8,7 +8,7 @@
     <link href="/2022/06/07/JavaScript%E8%AF%AD%E6%B3%95-%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5%E5%92%8C%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5/"/>
     <url>/2022/06/07/JavaScript%E8%AF%AD%E6%B3%95-%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5%E5%92%8C%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5/</url>
     
-    <content type="html"><![CDATA[<h2 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h2><hr><p>JavaScript提供 <a href="">if</a> 结构和 <a href="">switch</a> 结构，用以完成条件判断。</p><blockquote><p>~<br>即只有满足预设的条件，才会执行相应的语句。<br>~</p></blockquote><pre><code class="hljs">### 1. [if]() 结构if 结构先判断一个表达式的布尔值，然后根据布尔值的真伪，执行不同的语句。所谓布尔值，指的是 JavaScript 的两个特殊值，true表示“真”，false表示“伪”。</code></pre>]]></content>
+    <content type="html"><![CDATA[<h2 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h2><hr><p>JavaScript提供 <a href="">if</a> 结构和 <a href="">switch</a> 结构，用以完成条件判断。</p><blockquote><p>~<br>即只有满足预设的条件，才会执行相应的语句。<br>~</p></blockquote><h3 id="1-if-结构"><a href="#1-if-结构" class="headerlink" title="1. if 结构"></a>1. <a href="">if</a> 结构</h3><p>if 结构先判断一个表达式的布尔值，然后根据布尔值的真伪，执行不同的语句。所谓布尔值，指的是 JavaScript 的两个特殊值，true表示“真”，false表示“伪”。</p>]]></content>
     
     
     <categories>
@@ -20,7 +20,7 @@
     
     <tags>
       
-      <tag>JavaScript 学习笔记</tag>
+      <tag>JavaScript,学习笔记</tag>
       
     </tags>
     
