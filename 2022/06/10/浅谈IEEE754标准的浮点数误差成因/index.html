@@ -23,12 +23,16 @@
 <meta property="og:site_name" content="无稚青年睡草堂">
 <meta property="og:description" content="IEEE754标准中规定float单精度浮点数在机器中表示用 1 位表示数字的符号，用 8 位来表示指数，用23 位来表示尾数，即小数部分。对于double双精度浮点数，用 1 位表示符号，用 11 位表示指数，52 位表示尾数，其中指数域称为阶码。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2022/06/10/%E6%B5%85%E8%B0%88IEEE754%E6%A0%87%E5%87%86%E7%9A%84%E6%B5%AE%E7%82%B9%E6%95%B0%E8%AF%AF%E5%B7%AE%E6%88%90%E5%9B%A0/1-1.jpg">
+<meta property="og:image" content="http://example.com/2022/06/10/%E6%B5%85%E8%B0%88IEEE754%E6%A0%87%E5%87%86%E7%9A%84%E6%B5%AE%E7%82%B9%E6%95%B0%E8%AF%AF%E5%B7%AE%E6%88%90%E5%9B%A0/1-2.jpg">
+<meta property="og:image" content="http://example.com/2022/06/10/%E6%B5%85%E8%B0%88IEEE754%E6%A0%87%E5%87%86%E7%9A%84%E6%B5%AE%E7%82%B9%E6%95%B0%E8%AF%AF%E5%B7%AE%E6%88%90%E5%9B%A0/2.jpg">
 <meta property="article:published_time" content="2022-06-10T05:20:44.000Z">
-<meta property="article:modified_time" content="2022-06-10T11:00:27.834Z">
+<meta property="article:modified_time" content="2022-06-10T13:33:41.560Z">
 <meta property="article:author" content="silentblue">
 <meta property="article:tag" content="IEEE754">
 <meta property="article:tag" content="浮点数">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2022/06/10/%E6%B5%85%E8%B0%88IEEE754%E6%A0%87%E5%87%86%E7%9A%84%E6%B5%AE%E7%82%B9%E6%95%B0%E8%AF%AF%E5%B7%AE%E6%88%90%E5%9B%A0/1-1.jpg">
   
   
   
@@ -206,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.4k 字
+          3.6k 字
         
       </span>
     
@@ -217,7 +221,7 @@
         
         
         
-          20 分钟
+          30 分钟
         
       </span>
     
@@ -306,12 +310,61 @@
 <blockquote>
 <p>十进制8.125转化为二进制：<br>
 整数部分：<br>
-8÷2=4 余数 <code>0</code>；4÷2=2 余数 <code>0</code>；2÷2=1 余数 <code>1</code>；倒排序二进制表示为 <code>100</code><br>
+8÷2=4 余数 <code>0</code>；4÷2=2 余数 <code>0</code>；2÷2=1 余数 <code>0</code>；最后剩余 <code>1</code>；倒排序二进制表示为 <code>1000</code><br>
 小数部分：<br>
 0.125×2=0.25 整数部分 <code>0</code>；0.25×2=0.5 整数部分 <code>0</code>；0.5×2=1 整数部分 <code>1</code>；正序二进制表示为 <code>001</code><br>
-因此十进制<code>8.125</code>转化为二进制为 <code>100.001</code></p>
+因此十进制<code>8.125</code>转化为二进制为 <code>1000.001</code></p>
 </blockquote>
 <h3 id="2-5-浮点数的表示法">2.5 浮点数的表示法</h3>
+<p>一个浮点数分为三个部分，分别是符号位（sign bit），指数偏移值(exponent bias)，分数值(fraction)。浮点数的值(value)=符号位（sign bit）×指数偏移值(exponent bias)×有效数(fraction)。</p>
+<blockquote>
+<p>符号(S) :用來表示正/负(0/1)。<br>
+指数(E) :浮点数正规化后的次方，单精度的指数部分采用超127格式，即将原本的次方数加上127，因为次方数有可能是负的，加上计算机要表示负号时，必须拿一個位元来表示，所以就将-128~+127改为0~255，所以基准点就从0变成127。双精度的指数部分是−1022～+1023加上1023，指数值的大小从1～2046（0（2进位全为0）和2047（2进位全为1）是特殊值）。浮点小数计算时，指数值减去偏正值将是实际的指数大小。<br>
+有效数(F) :正规化后小数点之后的值。</p>
+</blockquote>
+<h4 id="单精度浮点数-float">单精度浮点数(float)</h4>
+<p><img src="1-1.jpg" srcset="/img/loading.gif" lazyload alt="单精度浮点数表示法"><br>
+sign：最左侧<code>1bit</code> 代表正负号，正数的话<code>sign</code>就为<code>0</code>，反之则是 <code>1</code><br>
+exponent：中间的<code>8bit</code>代表正规化后的次方数，采用的是<code>超127格式</code>，也就是<code>次方数</code>还要再加上<code>127</code><br>
+fraction：最右侧的<code>23bit</code> 放的是小数部分，以<code>1.0001</code>来说就是去掉<code>1.</code>之后的<code>0001</code></p>
+<p>我们以<code>8.125</code>为例，表示成IEEE 754标准的<code>32bit</code>格式：</p>
+<blockquote>
+<p>正规化：8.125=+1.000001×2<sup>3</sup></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Sign</th>
+<th>Exponent</th>
+<th>Fraction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 (+)</td>
+<td>1000 0010 (3+127=130)</td>
+<td>0000 0100 0000 0000 0000 000</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>二进制表示：0100 0001 0000 0010 0000 00000 0000 0000</p>
+</blockquote>
+<p>0.1 + 0.2 != 0.3的原因就在于0.1、0.2和0.3分别用二进制表示时，均无法转化成2的次方数相加，最后产生不同误差。</p>
+<p>有兴趣可以到<a target="_blank" rel="noopener" href="https://www.h-schmidt.net/FloatConverter/IEEE754.html">IEEE-754 Floating Point Converter</a>官网测试。</p>
+<h4 id="双精度浮点数-double">双精度浮点数(double)</h4>
+<p>为了让误差更小，<code>IEEE 754</code>也定义了如何用<code>64bit</code>来表示浮点数，跟<code>32bit</code>比起来<code>fraction</code>部分大了超过两倍，从<code>23bit</code>变成<code>52bit</code>，所以精准度自然提高许多。</p>
+<p><img src="1-2.jpg" srcset="/img/loading.gif" lazyload alt="双精度浮点数表示法"><br>
+sign：最左侧<code>1bit</code> 代表正负号，正数的话<code>sign</code>就为<code>0</code>，反之则是 <code>1</code><br>
+exponent：中间的<code>1bit</code>代表正规化后的次方数，采用的是<code>超1023格式</code>，也就是<code>次方数</code>还要再加上<code>1023</code><br>
+fraction：最右侧的<code>52bit</code> 放的是小数部分，以<code>1.0001</code>来说就是去掉<code>1.</code>之后的<code>0001</code></p>
+<p><img src="2.jpg" srcset="/img/loading.gif" lazyload alt="单双精度浮点数的对比"></p>
+<h3 id="2-6-如何解决浮点数误差">2.6 如何解决浮点数误差</h3>
+<p>1、设定一个最大允许误差值（EPSILON）<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number/EPSILON">例如ES6中内置的Number.EPSILON</a></p>
+<blockquote>
+<p>例如把 0.1 + 0.2 == 0.3改写成 0.1 + 0.2 — 0.3 &lt;= epsilon</p>
+</blockquote>
+<p>2、完全使用十进制进行计算，但不建议大规模使用，因为十进制计算是组件模拟出来的，CPU计算时仍会转化为二进制，会拖慢运算速度。</p>
 
               
             </div>
