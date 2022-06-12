@@ -27,7 +27,7 @@
 <meta property="og:image" content="http://example.com/2022/06/10/%E6%B5%85%E8%B0%88IEEE754%E6%A0%87%E5%87%86%E7%9A%84%E6%B5%AE%E7%82%B9%E6%95%B0%E8%AF%AF%E5%B7%AE%E6%88%90%E5%9B%A0/1-2.jpg">
 <meta property="og:image" content="http://example.com/2022/06/10/%E6%B5%85%E8%B0%88IEEE754%E6%A0%87%E5%87%86%E7%9A%84%E6%B5%AE%E7%82%B9%E6%95%B0%E8%AF%AF%E5%B7%AE%E6%88%90%E5%9B%A0/2.jpg">
 <meta property="article:published_time" content="2022-06-10T05:20:44.000Z">
-<meta property="article:modified_time" content="2022-06-12T14:41:54.378Z">
+<meta property="article:modified_time" content="2022-06-12T14:59:49.003Z">
 <meta property="article:author" content="silentblue">
 <meta property="article:tag" content="IEEE754">
 <meta property="article:tag" content="浮点数">
@@ -323,7 +323,7 @@
 <p>一个浮点数分为三个部分，分别是符号位（sign bit），指数偏移值(exponent bias)，分数值(fraction)。浮点数的值(value)=符号位（sign bit）×指数偏移值(exponent bias)×有效数(fraction)。</p>
 <blockquote>
 <p>符号(S) :用來表示正/负(0/1)。<br>
-指数(E) :浮点数正规化后的次方，单精度的指数部分采用超127格式，即将原本的次方数加上127，因为次方数有可能是负的，加上计算机要表示负号时，必须拿一個位元来表示，所以就将-128~+127改为0~255，所以基准点就从0变成127。双精度的指数部分是−1022～+1023加上1023，指数值的大小从1～2046（0（2进位全为0）和2047（2进位全为1）是特殊值）。浮点小数计算时，指数值减去偏正值将是实际的指数大小。<br>
+指数(E) :浮点数正规化后的次方，单精度的指数部分采用超127格式，即将原本的次方数加上127，因为次方数有可能是负的，加上计算机要表示负号时，必须拿一个位元来表示，所以就将-128~+127改为0~255，所以基准点就从0变成127。双精度的指数部分是−1022～+1023加上1023，指数值的大小从1～2046（0（2进位全为0）和2047（2进位全为1）是特殊值）。浮点小数计算时，指数值减去偏正值将是实际的指数大小。<br>
 有效数(F) :正规化后小数点之后的值。</p>
 </blockquote>
 <h4 id="单精度浮点数-float">单精度浮点数(float)</h4>
