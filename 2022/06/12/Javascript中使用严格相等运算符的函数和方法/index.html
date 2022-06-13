@@ -24,7 +24,7 @@
 <meta property="og:description" content="全等运算符 (&#x3D;&#x3D;&#x3D;) 会检查它的两个操作数是否相等，并且返回一个布尔值结果。与相等运算符不同，全等运算符总是认为不同类型的操作数是不同的。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-06-12T08:09:35.000Z">
-<meta property="article:modified_time" content="2022-06-13T00:22:04.421Z">
+<meta property="article:modified_time" content="2022-06-13T00:25:07.833Z">
 <meta property="article:author" content="silentblue">
 <meta property="article:tag" content="&#x3D;&#x3D;&#x3D;">
 <meta property="article:tag" content="严格相等运算符">
@@ -295,7 +295,7 @@
 <div class="note note-info">
             <p><strong>描述：</strong><br>一个 switch 语句首先会计算其 expression 。然后，它将从第一个 case 子句开始直到寻找到一个其表达式值与所输入的 expression 的值所相等的子句（使用 <code>严格运算符 </code>===）并将控制权转给该子句，执行相关语句。（如果多个 case 与提供的值匹配，则选择匹配的第一个 case，即使这些 case 彼此间并不相等。）</p><p>如果没有 case 子句相匹配，程序则会寻找那个可选的 default 子句，如果找到了，将控制权交给它，执行相关语句。若没有 default 子句，程序将继续执行直到 switch 结束。按照惯例，default 子句是最后一个子句，不过也不需要这样做。</p><p>可选的 break 语句确保程序立即从相关的 case 子句中跳出 switch 并接着执行 switch 之后的语句。若 break 被省略，程序会继续执行 switch 语句中的下一条语句。</p>
           </div>
-<h3 id="3-2-indexOf">3.2 indexOf()</h3>
+<h3 id="4-2-indexOf">4.2 indexOf()</h3>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">arr.<span class="hljs-title function_">indexOf</span>(searchElement[, fromIndex])<br></code></pre></td></tr></table></figure>
 <blockquote>
 <p>该方法将从头到尾地检索字符串 arr，看它是否含有子串 searchElement。开始检索的位置在字符串的 fromIndex 处或字符串的开头（没有指定 fromIndex 时）。如果找到一个 searchElement，则返回 searchElement 的第一次出现的位置。arr 中的字符位置是从 0 开始的。</p>
