@@ -24,7 +24,7 @@
 <meta property="og:description" content="JavaScript数据类型可以分为两类：原始类型和对象类型。JavaScript的原始类型包括数值、文本字符串（也称字符串）和布尔真值（也称布尔值）；特殊值null和undefined也是原始值，但它们不是数值、字符串或布尔值，通常被认为是各自特殊类型的唯一成员；任何不是数值、字符串、布尔值、符号、null和undefined的值都是对象。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-06-16T11:53:54.000Z">
-<meta property="article:modified_time" content="2022-06-17T08:48:38.662Z">
+<meta property="article:modified_time" content="2022-06-18T09:16:41.938Z">
 <meta property="article:author" content="silentblue">
 <meta property="article:tag" content="数据类型">
 <meta name="twitter:card" content="summary_large_image">
@@ -209,7 +209,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.4k 字
+          2.7k 字
         
       </span>
     
@@ -220,7 +220,7 @@
         
         
         
-          13 分钟
+          23 分钟
         
       </span>
     
@@ -281,7 +281,7 @@
 </ul>
 </blockquote>
 <h3 id="1-2-对象类型">1.2 对象类型</h3>
-<p>在JavaScript中，任何不是<code>数值</code>、<code>字符串</code>、<code>布尔值</code>、<code>符号</code>、<code>null</code>和<code>undefined</code>的值都是<strong>对象</strong>。</p>
+<p>在JavaScript中，任何不是<strong>数值</strong>、<strong>字符串</strong>、<strong>布尔值</strong>、<strong>符号</strong>、<strong>null</strong>和<strong>undefined</strong>的值都是<strong>对象</strong>。</p>
 <p><strong>对象</strong><small>（<u>也就是对象类型的成员</u>）</small>是 <em>属性</em> 的集合，其中每个<code>属性</code>都有一个<code>名字</code>和一个<code>值</code><small>（<u>原始值或其他对象</u>）</small>。</p>
 <blockquote>
 <ul>
@@ -295,19 +295,49 @@
 <h3 id="1-3-数据类型特点">1.3 数据类型特点</h3>
 <p>JavaScript的<code>对象类型</code>是可修改的（mutable），而它的<code>原始类型</code>是不可修改的（immutable）。</p>
 <p>可修改类型的值可以改变，比如JavaScript程序可以修改对象属性和数组元素的值。</p>
-<p>数值、布尔值、符号、null和undefined是不可修改的，以数值为例，修改它是没有意义的。</p>
-<p>字符串可以看成字符数组，字符串也是不可修改的。虽然可以按索引访问字符串中的字符，但JavaScript没有提供任何方式去修改已有字符串的字符。</p>
+<p><strong>数值</strong>、<strong>布尔值</strong>、<strong>符号</strong>、<strong>null</strong>和<strong>undefined</strong>是不可修改的，以数值为例，修改它是没有意义的。</p>
+<p><strong>字符串</strong>可以看成字符数组，<u>字符串也是<span style="color:red;">不可</span>修改的</u>。虽然可以按索引访问字符串中的字符，但JavaScript没有提供任何方式去修改已有字符串的字符。</p>
 <blockquote>
 <p>常量和变量可以让我们在程序中使用名字来引用其值。</p>
 </blockquote>
 <p>常量使用<code>const</code>声明，变量使用<code>let</code>（或在较老的JavaScript代码中使用var）声明。<br>
 JavaScript常量和变量是无类型的（untyped），声明并不会限定要赋何种类型的值。</p>
 <h2 id="2-数值">2. 数值</h2>
-<h3 id="2-1-数据类型特点">2.1 数据类型特点</h3>
+<h3 id="2-1-特点">2.1 特点</h3>
 <p>JavaScript的主要数值类型Number用于表示整数和近似实数。JavaScript使用IEEE 754标准<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://blog.silentblue.top/2022/06/10/浅谈IEEE754标准的浮点数误差成因/
-">[1]</span></a></sup>定义的64位浮点格式表示数值，这意味着JavaScript可以表示的最大整数是±1.797 693 134 862 315 7×10308，最小整数是±5×10-324。<br>
-JavaScript的这种数值格式可以让我们准确表示-9 007 199 254 740 992（-253）到9 007 199 254 740 992（253）之间的所有整数（含首尾值）。如果你的数值超出了这个范围，那可能会在末尾的数字上损失一些精度。但要注意，JavaScript中的某些操作（如第4章介绍的数组索引和位操作）是以32位整数计算的。如果想准确表示更大的整数，可以参考3.2.5节。<br>
-当数值真正出现在JavaScript程序中时，就叫作数值字面量（numeric literal）。JavaScript支持几种形式的数值字面量，后面几节会介绍。注意，任何数值字面量前面都可以加上一个减号（-）将数值变成负值。</p>
+">[1]</span></a></sup>定义的64位浮点格式表示数值，这种数值格式可以让我们准确表示-9 007 199 254 740 992（-2<sup>53</sup>）到9 007 199 254 740 992（2<sup>53</sup>）之间的所有整数（含首尾值）。如果你的数值超出了这个范围，那可能会在末尾的数字上损失一些精度。</p>
+<p>但要注意，JavaScript中的某些操作（如数组索引和位操作）是以32位整数计算的。当数值真正出现在JavaScript程序中时，就叫作数值字面量（numeric literal）。JavaScript支持几种形式的数值字面量，任何数值字面量前面都可以加上一个减号（-）将数值变成负值。</p>
+<h3 id="2-2-数值的进制与表示方法">2.2 数值的进制与表示方法</h3>
+<p>在JavaScript程序中，基数为10的整数可以直接写成数字序列。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-number">3</span><br><span class="hljs-number">5</span><br><span class="hljs-number">1000</span><br></code></pre></td></tr></table></figure>
+<p>除了基数为10的整数字面量之外，JavaScript也支持十六进制（基数是16的）值。十六进制字面量以<code>0x</code>或<code>0X</code>开头，后跟一个十六进制数字字符串。十六进制数字是数字<code>0</code>到<code>9</code>和字母<code>a（或A）</code>到<code>f（或F）</code>，<code>a到f</code>表示<code>10到15</code>。下面是十六进制整数字面量的例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-number">0xff</span> <span class="hljs-comment">// 255</span><br><span class="hljs-number">0o377</span> <span class="hljs-comment">// 255</span><br><span class="hljs-number">0b11</span> <span class="hljs-comment">// 3</span><br></code></pre></td></tr></table></figure>
+<p>在ES6及之后的版本中，也可以通过<code>二进制</code>（基数为2）或<code>八进制</code>（基数为8）表示整数，分别使用前缀<code>0b</code>和<code>0o</code>（或<code>0B</code>和<code>0O</code>）：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-number">0b10101</span> <span class="hljs-comment">// 21 (1*16+0*8+1*4+0*2+1*1)</span><br><span class="hljs-number">0o377</span> <span class="hljs-comment">// 255 (3*64+7*8+7*1)</span><br></code></pre></td></tr></table></figure>
+<div class="note note-info">
+            <table><thead><tr><th style="text-align:right">进制</th><th style="text-align:right">表示方法</th><th style="text-align:right">注意</th></tr></thead><tbody><tr><td style="text-align:right">二进制</td><td style="text-align:right">0b/0B</td><td style="text-align:right">默认情况下，JavaScript 内部会自动将八进制、十六进制、二进制转为十进制。</td></tr><tr><td style="text-align:right">八进制</td><td style="text-align:right">0o/0O</td><td style="text-align:right">如果八进制、十六进制、二进制的数值里面，出现不属于该进制的数字，就会报错。</td></tr><tr><td style="text-align:right">十进制</td><td style="text-align:right">无</td><td style="text-align:right">通常来说，有前导0的数值会被视为八进制，但是如果前导0后面有数字8和9，则该数值被视为十进制。</td></tr><tr><td style="text-align:right">十六进制</td><td style="text-align:right">0x/0X</td><td style="text-align:right">前导0表示八进制，处理时很容易造成混乱。ES5 的严格模式和 ES6，已经废除了这种表示法，但是浏览器为了兼容以前的代码，目前还继续支持这种表示法。</td></tr></tbody></table>
+          </div>
+<p>浮点字面量可以包含小数点，它们对实数使用传统语法。实数值由数值的整数部分、小数点和数值的小数部分组成。</p>
+<p>浮点字面量也可以使用指数记数法表示，即实数值后面可以跟字母e（或E），跟一个可选的加号或减号，再跟一个整数指数。这种记数法表示的是实数值乘以10的指数次幂。</p>
+<blockquote>
+<p>简明格式：<br>
+[digits][.digits][(E/e)[(+/-)]digits]</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-number">123e3</span> <span class="hljs-comment">// 123000 </span><br><span class="hljs-number">123e-3</span> <span class="hljs-comment">// 0.123</span><br>-<span class="hljs-number">3.1E+12</span><br><span class="hljs-number">.1e-23</span><br></code></pre></td></tr></table></figure>
+<p>以下两种情况，JavaScript 会自动将数值转为科学计数法表示，其他情况都采用字面形式直接表示：</p>
+<div class="note note-info">
+            <table><thead><tr><th style="text-align:right">规则</th><th style="text-align:right">实例</th></tr></thead><tbody><tr><td style="text-align:right">小数点前的数字<code>大于&gt;</code>21位</td><td style="text-align:right">1234567890123456789012  /=&gt; 1.2345678901234568e+21</td></tr><tr><td style="text-align:right">小数点后0<code>大于&gt;</code>5个</td><td style="text-align:right">0.0000003 /=&gt; 3e-7</td></tr></tbody></table>
+          </div>
+<p><strong>数值字面量中的分隔符：</strong></p>
+<p>可以用下划线将数值字面量分隔为容易看清的数字段：</p>
+<blockquote>
+<p>字节(byte)是计算机中数据处理的基本单位。 计算机中以字节(byte)为单位存储和解释信息，规定一个字节(byte)由八个二进制位构成，即1个字节等于8个比特（1Byte=8bit）。八位二进制数最小为0000_0000，最大为1111_1111；通常1个字节可以存入一个ASCII码，2个字节可以存放一个汉字国标码。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> billion = <span class="hljs-number">1_000_000_000</span>; <span class="hljs-comment">//以下划线作为千分位分隔符</span><br><span class="hljs-keyword">let</span> bytes = <span class="hljs-number">0X89_AB_CD_EF</span>;  <span class="hljs-comment">//作为字节分隔符</span><br><span class="hljs-keyword">let</span> bits = <span class="hljs-number">0b0001_1101_0111</span>; <span class="hljs-comment">//作为半字节分隔符</span><br><span class="hljs-keyword">let</span> fraction = <span class="hljs-number">0.123_456_789</span> <span class="hljs-comment">//作为小数部分分隔符</span><br></code></pre></td></tr></table></figure>
+<div class="note note-warning">
+            <p>数值字面量中像这样添加下划线还没有成为正式的JavaScript标准。但这个特性已经进入标准化流程的后期，而且已经被所有主流浏览器以及Node实现了。</p>
+          </div>
+<h2 id="注释："><em><strong>注释：</strong></em></h2>
 <section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://blog.silentblue.top/2022/06/10/%E6%B5%85%E8%B0%88IEEE754%E6%A0%87%E5%87%86%E7%9A%84%E6%B5%AE%E7%82%B9%E6%95%B0%E8%AF%AF%E5%B7%AE%E6%88%90%E5%9B%A0/">https://blog.silentblue.top/2022/06/10/浅谈IEEE754标准的浮点数误差成因/</a>
 <a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
               
