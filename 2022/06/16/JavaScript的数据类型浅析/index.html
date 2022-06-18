@@ -24,9 +24,8 @@
 <meta property="og:description" content="JavaScript数据类型可以分为两类：原始类型和对象类型。JavaScript的原始类型包括数值、文本字符串（也称字符串）和布尔真值（也称布尔值）；特殊值null和undefined也是原始值，但它们不是数值、字符串或布尔值，通常被认为是各自特殊类型的唯一成员；任何不是数值、字符串、布尔值、符号、null和undefined的值都是对象。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-06-16T11:53:54.000Z">
-<meta property="article:modified_time" content="2022-06-16T08:06:00.570Z">
+<meta property="article:modified_time" content="2022-06-17T08:48:38.662Z">
 <meta property="article:author" content="silentblue">
-<meta property="article:tag" content="JavaScript">
 <meta property="article:tag" content="数据类型">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -210,7 +209,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          1.4k 字
         
       </span>
     
@@ -221,7 +220,7 @@
         
         
         
-          1 分钟
+          13 分钟
         
       </span>
     
@@ -271,7 +270,46 @@
             
             <div class="markdown-body">
               
-              
+              <h2 id="1-数据类型的概述">1. 数据类型的概述</h2>
+<p>JavaScript类型可以分为两类：原始类型和对象类型。</p>
+<h3 id="1-1-原始类型">1.1 原始类型</h3>
+<blockquote>
+<ul>
+<li>JavaScript的原始类型包括 <strong>数值</strong> 、<strong>文本字符串</strong>（也称字符串）和 <strong>布尔真值</strong>（也称布尔值）。</li>
+<li>JavaScript中的特殊值 <strong>null</strong> 和 <strong>undefined</strong> 也是原始值，但它们不是数值、字符串或布尔值。这两个值通常被认为是各自特殊类型的唯一成员。</li>
+<li>ES6新增了一种特殊类型 <strong>Symbol</strong>（符号），用于对语言进行扩展而不破坏向后兼容性。</li>
+</ul>
+</blockquote>
+<h3 id="1-2-对象类型">1.2 对象类型</h3>
+<p>在JavaScript中，任何不是<code>数值</code>、<code>字符串</code>、<code>布尔值</code>、<code>符号</code>、<code>null</code>和<code>undefined</code>的值都是<strong>对象</strong>。</p>
+<p><strong>对象</strong><small>（<u>也就是对象类型的成员</u>）</small>是 <em>属性</em> 的集合，其中每个<code>属性</code>都有一个<code>名字</code>和一个<code>值</code><small>（<u>原始值或其他对象</u>）</small>。</p>
+<blockquote>
+<ul>
+<li>普通JavaScript对象是一个命名值的无序集合。</li>
+<li>JavaScript自身定义了一种特殊对象，称为数组。数组表示一个数字值的有序集合。</li>
+</ul>
+</blockquote>
+<div class="note note-info">
+            <blockquote><p>除了基本的<code>对象</code>和<code>数组</code>之外，JavaScript还定义了其他一些有用的对象类型。</p></blockquote><ul><li>Set对象表示一组值的集合，Map对象表示键与值的映射。</li><li>各种“定型数组”（typed array）类型便于对字节数组和其他二进制数据进行操作。</li><li>RegExp类型表示文本模式，可以实现对字符串的复杂匹配、搜索和替换操作。</li><li>Date类型表示日期和时间，支持基本的日期计算。</li><li>Error及其子类型表示JavaScript代码运行期间可能发生的错误。</li></ul>
+          </div>
+<h3 id="1-3-数据类型特点">1.3 数据类型特点</h3>
+<p>JavaScript的<code>对象类型</code>是可修改的（mutable），而它的<code>原始类型</code>是不可修改的（immutable）。</p>
+<p>可修改类型的值可以改变，比如JavaScript程序可以修改对象属性和数组元素的值。</p>
+<p>数值、布尔值、符号、null和undefined是不可修改的，以数值为例，修改它是没有意义的。</p>
+<p>字符串可以看成字符数组，字符串也是不可修改的。虽然可以按索引访问字符串中的字符，但JavaScript没有提供任何方式去修改已有字符串的字符。</p>
+<blockquote>
+<p>常量和变量可以让我们在程序中使用名字来引用其值。</p>
+</blockquote>
+<p>常量使用<code>const</code>声明，变量使用<code>let</code>（或在较老的JavaScript代码中使用var）声明。<br>
+JavaScript常量和变量是无类型的（untyped），声明并不会限定要赋何种类型的值。</p>
+<h2 id="2-数值">2. 数值</h2>
+<h3 id="2-1-数据类型特点">2.1 数据类型特点</h3>
+<p>JavaScript的主要数值类型Number用于表示整数和近似实数。JavaScript使用IEEE 754标准<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://blog.silentblue.top/2022/06/10/浅谈IEEE754标准的浮点数误差成因/
+">[1]</span></a></sup>定义的64位浮点格式表示数值，这意味着JavaScript可以表示的最大整数是±1.797 693 134 862 315 7×10308，最小整数是±5×10-324。<br>
+JavaScript的这种数值格式可以让我们准确表示-9 007 199 254 740 992（-253）到9 007 199 254 740 992（253）之间的所有整数（含首尾值）。如果你的数值超出了这个范围，那可能会在末尾的数字上损失一些精度。但要注意，JavaScript中的某些操作（如第4章介绍的数组索引和位操作）是以32位整数计算的。如果想准确表示更大的整数，可以参考3.2.5节。<br>
+当数值真正出现在JavaScript程序中时，就叫作数值字面量（numeric literal）。JavaScript支持几种形式的数值字面量，后面几节会介绍。注意，任何数值字面量前面都可以加上一个减号（-）将数值变成负值。</p>
+<section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://blog.silentblue.top/2022/06/10/%E6%B5%85%E8%B0%88IEEE754%E6%A0%87%E5%87%86%E7%9A%84%E6%B5%AE%E7%82%B9%E6%95%B0%E8%AF%AF%E5%B7%AE%E6%88%90%E5%9B%A0/">https://blog.silentblue.top/2022/06/10/浅谈IEEE754标准的浮点数误差成因/</a>
+<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
               
             </div>
             <hr/>
@@ -319,8 +357,6 @@
   
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/JavaScript/">#JavaScript</a>
       
         <a href="/tags/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">#数据类型</a>
       
