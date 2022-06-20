@@ -24,7 +24,7 @@
 <meta property="og:description" content="JavaScript数据类型可以分为两类：原始类型和对象类型。JavaScript的原始类型包括数值、文本字符串（也称字符串）和布尔真值（也称布尔值）；特殊值null和undefined也是原始值，但它们不是数值、字符串或布尔值，通常被认为是各自特殊类型的唯一成员；任何不是数值、字符串、布尔值、符号、null和undefined的值都是对象。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-06-16T11:53:54.000Z">
-<meta property="article:modified_time" content="2022-06-20T09:54:59.381Z">
+<meta property="article:modified_time" content="2022-06-20T16:16:19.278Z">
 <meta property="article:author" content="silentblue">
 <meta property="article:tag" content="数据类型">
 <meta property="article:tag" content="数值">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          8.4k 字
+          12k 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          71 分钟
+          100 分钟
         
       </span>
     
@@ -409,6 +409,161 @@ parseInt方法还可以接受第二个参数（<code>2到36</code>之间），�
 <h4 id="big-parseFloat-big"><big><code>parseFloat()</code></big></h4>
 <hr>
 <p><code>parseFloat</code>方法用于将一个字符串转为浮点数。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">parseFloat</span>(<span class="hljs-string">&#x27;1.23&#x27;</span>) <span class="hljs-comment">//1.23</span><br></code></pre></td></tr></table></figure>
+<p><em>1. 如果字符串符合科学计数法，则会进行相应的转换。</em></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">parseFloat</span>(<span class="hljs-string">&#x27;123e-2&#x27;</span>) <span class="hljs-comment">//1.23</span><br><span class="hljs-built_in">parseFloat</span>(<span class="hljs-string">&#x27;0.0123e+2&#x27;</span>) <span class="hljs-comment">//1.23</span><br></code></pre></td></tr></table></figure>
+<p><em>2. 如果字符串包含不能转为浮点数的字符，则不再进行往后转换，返回已经转好的部分。</em></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">parseFloat</span>(<span class="hljs-string">&#x27;3.14more non-digit characters&#x27;</span>) <span class="hljs-comment">// 3.14</span><br></code></pre></td></tr></table></figure>
+<p><em>3. parseFloat方法会自动过滤字符串前导的空格。</em></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">parseFloat</span>(<span class="hljs-string">&#x27;\t\v\r12.34\n &#x27;</span>) <span class="hljs-comment">// 12.34</span><br><span class="hljs-comment">// \&#x27; Single quote (&#x27;)</span><br><span class="hljs-comment">// \&quot; Double quote (&quot;)</span><br><span class="hljs-comment">// \a ASCII Bell (BEL)</span><br><span class="hljs-comment">// \b ASCII Backspace (BS)</span><br><span class="hljs-comment">// \f ASCII Formfeed (FF)</span><br><span class="hljs-comment">// \n ASCII Linefeed (LF)</span><br><span class="hljs-comment">// \N&#123;name&#125; Character named name in the Unicode database (Unicode only)</span><br><span class="hljs-comment">// \r ASCII Carriage Return (CR)</span><br><span class="hljs-comment">// \t ASCII Horizontal Tab (TAB)</span><br><span class="hljs-comment">// \uxxxx Character with 16-bit hex value xxxx (Unicode only) (1) </span><br><span class="hljs-comment">// \Uxxxxxxxx Character with 32-bit hex value xxxxxxxx (Unicode only) (2)</span><br><span class="hljs-comment">// \v ASCII Vertical Tab (VT)</span><br></code></pre></td></tr></table></figure>
+<p><em>4. 如果参数不是字符串，则会先转为字符串再转换。</em></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">parseFloat</span>([<span class="hljs-number">1.23</span>]) <span class="hljs-comment">// 1.23</span><br><span class="hljs-comment">// 等同于</span><br><span class="hljs-built_in">parseFloat</span>(<span class="hljs-title class_">String</span>([<span class="hljs-number">1.23</span>])) <span class="hljs-comment">// 1.23</span><br></code></pre></td></tr></table></figure>
+<p><em>5. 如果字符串的第一个字符不能转化为浮点数，则返回NaN。</em></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">parseFloat</span>([]) <span class="hljs-comment">// NaN</span><br><span class="hljs-built_in">parseFloat</span>(<span class="hljs-string">&#x27;FF2&#x27;</span>) <span class="hljs-comment">// NaN</span><br><span class="hljs-built_in">parseFloat</span>(<span class="hljs-string">&#x27;&#x27;</span>) <span class="hljs-comment">// NaN</span><br><br>上面代码中，尤其值得注意，<span class="hljs-built_in">parseFloat</span>会将空字符串转为<span class="hljs-title class_">NaN</span>。<br></code></pre></td></tr></table></figure>
+<p>这些特点使得parseFloat的转换结果不同于Number函数:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">parseFloat</span>(<span class="hljs-literal">true</span>)  <span class="hljs-comment">// NaN</span><br><span class="hljs-title class_">Number</span>(<span class="hljs-literal">true</span>) <span class="hljs-comment">// 1</span><br><br><span class="hljs-built_in">parseFloat</span>(<span class="hljs-literal">null</span>) <span class="hljs-comment">// NaN</span><br><span class="hljs-title class_">Number</span>(<span class="hljs-literal">null</span>) <span class="hljs-comment">// 0</span><br><br><span class="hljs-built_in">parseFloat</span>(<span class="hljs-string">&#x27;&#x27;</span>) <span class="hljs-comment">// NaN</span><br><span class="hljs-title class_">Number</span>(<span class="hljs-string">&#x27;&#x27;</span>) <span class="hljs-comment">// 0</span><br><br><span class="hljs-built_in">parseFloat</span>(<span class="hljs-string">&#x27;123.45#&#x27;</span>) <span class="hljs-comment">// 123.45</span><br><span class="hljs-title class_">Number</span>(<span class="hljs-string">&#x27;123.45#&#x27;</span>) <span class="hljs-comment">// NaN</span><br></code></pre></td></tr></table></figure>
+<h4 id="big-isNaN-big"><big><code>isNaN()</code></big></h4>
+<hr>
+<p><code>isNaN</code>方法可以用来判断一个值是否为<code>NaN</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">isNaN</span>(<span class="hljs-title class_">NaN</span>) <span class="hljs-comment">//true</span><br><span class="hljs-built_in">isNaN</span>(<span class="hljs-number">123</span>) <span class="hljs-comment">//false</span><br></code></pre></td></tr></table></figure>
+<p><code>isNaN</code>只对<code>数值</code>有效，如果传入其他值，会被先转成数值。比如，<u>传入字符串的时候，字符串会被先转成NaN，所以最后返回true</u>，这一点要特别引起注意。也就是说，<strong>isNaN为true的值，有可能不是NaN，而是一个字符串</strong>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">isNaN</span>(<span class="hljs-string">&#x27;Hello&#x27;</span>) <span class="hljs-comment">// true</span><br><span class="hljs-comment">// 相当于</span><br><span class="hljs-built_in">isNaN</span>(<span class="hljs-title class_">Number</span>(<span class="hljs-string">&#x27;Hello&#x27;</span>)) <span class="hljs-comment">// true</span><br></code></pre></td></tr></table></figure>
+<p>出于同样的原因，对于对象和数组，isNaN也返回true。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">isNaN</span>(&#123;&#125;) <span class="hljs-comment">// true</span><br><span class="hljs-comment">// 等同于</span><br><span class="hljs-built_in">isNaN</span>(<span class="hljs-title class_">Number</span>(&#123;&#125;)) <span class="hljs-comment">// true</span><br><br><span class="hljs-built_in">isNaN</span>([<span class="hljs-string">&#x27;xzy&#x27;</span>]) <span class="hljs-comment">// true</span><br><span class="hljs-comment">// 等同于</span><br><span class="hljs-built_in">isNaN</span>(<span class="hljs-title class_">Number</span>([<span class="hljs-string">&#x27;xzy&#x27;</span>])) <span class="hljs-comment">// true</span><br></code></pre></td></tr></table></figure>
+<p>但是，对于空数组和只有一个数值成员的数组，isNaN返回false。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">isNaN</span>([]) <span class="hljs-comment">// false</span><br><span class="hljs-built_in">isNaN</span>([<span class="hljs-number">123</span>]) <span class="hljs-comment">// false</span><br><span class="hljs-built_in">isNaN</span>([<span class="hljs-string">&#x27;123&#x27;</span>]) <span class="hljs-comment">// false</span><br>上面代码之所以返回<span class="hljs-literal">false</span>，原因是<span class="hljs-string">`Number()`</span>把空数组、空格、以及<span class="hljs-title class_">NUll</span>按照<span class="hljs-number">0</span>来处理 <br></code></pre></td></tr></table></figure>
+<p>因此，使用isNaN之前，最好判断一下数据类型。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">myIsNaN</span>(<span class="hljs-params">value</span>) &#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-keyword">typeof</span> value === <span class="hljs-string">&#x27;number&#x27;</span> &amp;&amp; <span class="hljs-built_in">isNaN</span>(value);<br>  <span class="hljs-comment">//结果为return true;函数才返回结果。等同于</span><br>  <span class="hljs-comment">// [typeof value === &#x27;number&#x27;] &amp;&amp; [isNaN(value)] 结果都为true,函数才返回结果。</span><br>  <span class="hljs-comment">//即 value为数值类型并且 isNan(value)结果为true，两个条件都需达成</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>判断NaN更可靠的方法是，利用<code>NaN</code>为<em>唯一</em>不等于自身的值的这个特点，进行判断。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">myIsNaN</span>(<span class="hljs-params">value</span>) &#123;<br>  <span class="hljs-keyword">return</span> value !== value;<br>  <span class="hljs-comment">// x != x,有且仅当x为NaN时成立。</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="big-isFinite-big"><big><code>isFinite()</code></big></h4>
+<hr>
+<p><code>isFinite</code>方法返回一个布尔值，表示某个值是否为正常的数值。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">isFinite</span>(<span class="hljs-title class_">Infinity</span>) <span class="hljs-comment">// false</span><br><span class="hljs-built_in">isFinite</span>(-<span class="hljs-title class_">Infinity</span>) <span class="hljs-comment">// false</span><br><span class="hljs-built_in">isFinite</span>(<span class="hljs-title class_">NaN</span>) <span class="hljs-comment">// false</span><br><span class="hljs-built_in">isFinite</span>(<span class="hljs-literal">undefined</span>) <span class="hljs-comment">// false</span><br><span class="hljs-built_in">isFinite</span>(<span class="hljs-literal">null</span>) <span class="hljs-comment">// true</span><br><span class="hljs-built_in">isFinite</span>(-<span class="hljs-number">1</span>) <span class="hljs-comment">// true</span><br></code></pre></td></tr></table></figure>
+<p>除了<code>Infinity</code>、<code>-Infinity</code>、<code>NaN</code>和<code>undefined</code>这几个值会返回false，isFinite对于其他的数值都会返回true。</p>
+<h3 id="2-6-big-Number对象的属性-big">2.6 <big>Number对象的属性</big></h3>
+<hr>
+<table>
+<thead>
+<tr>
+<th>全局对象</th>
+<th>结果释义</th>
+<th>对应Number属性</th>
+<th>结果释义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Infinity</td>
+<td>因为太大而无法表示的正数</td>
+<td>Number.POSITIVE_INFINITY</td>
+<td>相同</td>
+</tr>
+<tr>
+<td>-Infinity</td>
+<td>因为太大而无法表示的负数</td>
+<td>Number.NAGATIVE_INFINITY</td>
+<td>相同</td>
+</tr>
+<tr>
+<td>1/0</td>
+<td>Infinity</td>
+<td>Number.MAX_VALUE *2</td>
+<td>Infinity;溢出</td>
+</tr>
+<tr>
+<td>-1/0</td>
+<td>-Infinity</td>
+<td>-Number.MAX_VALUE *2</td>
+<td>-Infinity;</td>
+</tr>
+<tr>
+<td>NaN</td>
+<td>非数值</td>
+<td>Number.NaN</td>
+<td>非数值；与全局写法不同而已</td>
+</tr>
+<tr>
+<td>0/0</td>
+<td>NaN</td>
+<td>Infinity/Infinity</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>Number.MIN_VALUE / 2</td>
+<td>0;下溢出</td>
+<td>-Number.MIN_VALUE/2</td>
+<td>-0</td>
+</tr>
+<tr>
+<td>-1/Infinity</td>
+<td>-0</td>
+<td>-0 /Infinity</td>
+<td>-0</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><em>ES6新增Number属性</em></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>ES6定义的属性</th>
+<th>对应全局函数</th>
+<th>属性释义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Number.parseInt()</td>
+<td>parseInt()</td>
+<td>一致</td>
+</tr>
+<tr>
+<td>Number.parseFloat()</td>
+<td>parseFloat()</td>
+<td>一致</td>
+</tr>
+<tr>
+<td>Number.isNan()</td>
+<td>isNaN()</td>
+<td>判断是不是NaN,在参数是NaN时，或者在参数是无法转换为数值的非数值时返回true</td>
+</tr>
+<tr>
+<td>Number.isFinite()</td>
+<td>isFinite()</td>
+<td>Number.isFinite()在参数不是NaN、Infinity或-Infinity时返回true。<br>全局isFinite()函数在参数是有限数或者可以转换为有限数时返回true</td>
+</tr>
+<tr>
+<td>Number.isInteger()</td>
+<td></td>
+<td>用来判断给定的参数是否为整数。<br>注意 NaN 和正负 Infinity 不是整数</td>
+</tr>
+<tr>
+<td>Number.isSafeInteger()</td>
+<td></td>
+<td>用来判断传入的参数值是否是一个“安全整数”,安全整数范围为 -(2^53 - 1) 到 2^53 - 1 之间的整数，包含 -(2^53 - 1) 和 2^53 - 1</td>
+</tr>
+<tr>
+<td>Number.MIN_SAFE_INTEGER</td>
+<td></td>
+<td>-(2^53 - 1)</td>
+</tr>
+<tr>
+<td>Number.MAX_SAFE_INTEGER</td>
+<td></td>
+<td>(2^53 - 1)</td>
+</tr>
+<tr>
+<td>Number.EPSILON</td>
+<td></td>
+<td>表示 1 与Number可表示的大于 1 的最小的浮点数之间的差值<br>(可理解为两个数值之间最小的误差值，例如，0.1+0.2!=0.3,但是，如果0.1+0.2-0.3 &lt; <code>Number.EPSILON</code>的话，即可证明0.1+0.2===0.3)；<br>不必创建Number对象可直接使用。<br>EPSILON 属性的值接近于 2.2204460492503130808472633361816E-16，或者 2^-52；</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-7-通过BigInt表示任意精度整数">2.7 通过BigInt表示任意精度整数</h3>
+<h3 id="2-8-日期和时间的数值表示形式">2.8 日期和时间的数值表示形式</h3>
 <h2 id="注释："><em><strong>注释：</strong></em></h2>
 <section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://blog.silentblue.top/2022/06/10/%E6%B5%85%E8%B0%88IEEE754%E6%A0%87%E5%87%86%E7%9A%84%E6%B5%AE%E7%82%B9%E6%95%B0%E8%AF%AF%E5%B7%AE%E6%88%90%E5%9B%A0/">https://blog.silentblue.top/2022/06/10/浅谈IEEE754标准的浮点数误差成因/</a>
 <a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math</a>
