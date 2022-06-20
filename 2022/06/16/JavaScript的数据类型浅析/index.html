@@ -24,9 +24,22 @@
 <meta property="og:description" content="JavaScript数据类型可以分为两类：原始类型和对象类型。JavaScript的原始类型包括数值、文本字符串（也称字符串）和布尔真值（也称布尔值）；特殊值null和undefined也是原始值，但它们不是数值、字符串或布尔值，通常被认为是各自特殊类型的唯一成员；任何不是数值、字符串、布尔值、符号、null和undefined的值都是对象。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-06-16T11:53:54.000Z">
-<meta property="article:modified_time" content="2022-06-18T09:16:41.938Z">
+<meta property="article:modified_time" content="2022-06-19T15:37:18.957Z">
 <meta property="article:author" content="silentblue">
 <meta property="article:tag" content="数据类型">
+<meta property="article:tag" content="数值">
+<meta property="article:tag" content="文本字符串">
+<meta property="article:tag" content="布尔值">
+<meta property="article:tag" content="boolean">
+<meta property="article:tag" content="undefined">
+<meta property="article:tag" content="symbol">
+<meta property="article:tag" content="对象">
+<meta property="article:tag" content="math">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="算数">
+<meta property="article:tag" content="object">
+<meta property="article:tag" content="array">
+<meta property="article:tag" content="数组">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -209,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.7k 字
+          6k 字
         
       </span>
     
@@ -220,7 +233,7 @@
         
         
         
-          23 分钟
+          50 分钟
         
       </span>
     
@@ -337,9 +350,30 @@ JavaScript常量和变量是无类型的（untyped），声明并不会限定要
 <div class="note note-warning">
             <p>数值字面量中像这样添加下划线还没有成为正式的JavaScript标准。但这个特性已经进入标准化流程的后期，而且已经被所有主流浏览器以及Node实现了。</p>
           </div>
+<h3 id="2-3-数学方法">2.3 数学方法</h3>
+<p>JavaScript程序的算术操作符包括表示<code>加法</code>的<code>+</code>、表示<code>减法</code>的<code>-</code>、表示<code>乘法</code>的<code>*</code>、表示<code>除法</code>的<code>/</code>和表示<code>取模（除法后的余数）</code>的<code>%</code>。ES2016增加了<code>取幂</code>的<code>**</code>。</p>
+<blockquote>
+<p><code>幂</code>在数学里表示次方，求幂运算符（**）返回将第一个操作数加到第二个操作数的幂的结果(a ** b = a<sup>b</sup>)。<br>
+<code>**</code>等效于Math.pow(a,b)，不同之处在于它也接受 BigInts 作为操作数。<br>
+<code>**</code>是右结合的: a ** b ** c 等于 a ** (b ** c)<br>
+在 JavaScript里，不能将一个一元运算符（+/-/~/!/delete/void/typeof）放在基数前，会导致一个语法错误。</p>
+</blockquote>
+<!-- <span class="label label-warning">求幂运算符是是右结合的: a ** b ** c 等于 a ** (b ** c)</span> -->
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">3</span> ** <span class="hljs-number">4</span>);<br><span class="hljs-comment">// expected output: 81</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">10</span> ** -<span class="hljs-number">2</span>);<br><span class="hljs-comment">// expected output: 0.01</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">2</span> ** <span class="hljs-number">3</span> ** <span class="hljs-number">2</span>);<br><span class="hljs-comment">// expected output: 512 </span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>((<span class="hljs-number">2</span> ** <span class="hljs-number">3</span>) ** <span class="hljs-number">2</span>);<br><span class="hljs-comment">// expected output: 64</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(-<span class="hljs-number">2</span> ** <span class="hljs-number">3</span>);<br><span class="hljs-comment">// SyntaxError  语法错误</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(-(<span class="hljs-number">2</span> ** <span class="hljs-number">3</span>));<br><span class="hljs-comment">// expected output: -8</span><br></code></pre></td></tr></table></figure>
+<p>除了上述基本的算术操作符之外，JavaScript还通过Math对象的属性提供了一组函数和常量，以支持更复杂的数学计算：</p>
+<div class="note note-primary">
+            <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title class_">Math</span>.<span class="hljs-title function_">pow</span>(<span class="hljs-number">2</span>,<span class="hljs-number">5</span>) <span class="hljs-comment">// =&gt; 64,2的5次方  &lt;==&gt;  2 ** 5</span><br><span class="hljs-title class_">Math</span>.<span class="hljs-title function_">round</span>(<span class="hljs-number">0.5</span>) <span class="hljs-comment">// =&gt;1,舍入到最近的整数</span><br><span class="hljs-title class_">Math</span>.<span class="hljs-title function_">ceil</span>(<span class="hljs-number">0.3</span>) <span class="hljs-comment">// =&gt;1,向上舍入到一个整数</span><br><span class="hljs-title class_">Math</span>.<span class="hljs-title function_">floor</span>(<span class="hljs-number">0.8</span>) <span class="hljs-comment">// =&gt;0,向下舍入到一个整数</span><br><span class="hljs-title class_">Math</span>.<span class="hljs-title function_">abs</span>(-<span class="hljs-number">5</span>) <span class="hljs-comment">// =&gt;5,取绝对值</span><br><span class="hljs-title class_">Math</span>.<span class="hljs-title function_">max</span>(x,y,z) <span class="hljs-comment">// 返回最大的参数</span><br><span class="hljs-title class_">Math</span>.<span class="hljs-title function_">min</span>(x,y,z) <span class="hljs-comment">// 返回最小的参数</span><br><span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() <span class="hljs-comment">// 伪随机数x,其中0 ≤ x ＜ 1.0</span><br><span class="hljs-title class_">Math</span>.<span class="hljs-property">PI</span> <span class="hljs-comment">//圆周率Π</span><br><span class="hljs-title class_">Math</span>.<span class="hljs-property">E</span> <span class="hljs-comment">// 自然对数的底数e,数学中常以logx表示自然对数</span><br><span class="hljs-title class_">Math</span>.<span class="hljs-title function_">sqrt</span>(<span class="hljs-number">3</span>) <span class="hljs-comment">// &lt;==&gt; Math.pow(3,(1/2)) =&gt; 3 ** 0.5，求3的平方根</span><br><span class="hljs-title class_">Math</span>.<span class="hljs-title function_">pow</span>(<span class="hljs-number">3</span>,<span class="hljs-number">1</span>/<span class="hljs-number">3</span>) <span class="hljs-comment">// 3 ** (1/3),求3的立方根</span><br><span class="hljs-title class_">Math</span>.<span class="hljs-title function_">sin</span>(<span class="hljs-number">0</span>) <span class="hljs-comment">// 三角函数，类似还有Math.acos()、Math.asin()、Math.atan()、</span><br>            <span class="hljs-comment">// Math.atan2()、Math.cos()、Math.tan()等</span><br><span class="hljs-title class_">Math</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">10</span>) <span class="hljs-comment">// 10的自然对数，此处底数应为e</span><br><span class="hljs-comment">/*  </span><br><span class="hljs-comment">1、a^x=N(a&gt;0,且a≠1)，则x叫做以a为底N的对数,记做x=log(a)(N)，其中a要写于log右下。</span><br><span class="hljs-comment">2、其中a叫做对数的底，N叫做真数。通常我们将以10为底的对数叫做常用对数，以e为底的对数称为自然对数。</span><br><span class="hljs-comment">3、log的底数是10时可以写成lg，底数是e时可以简写成ln。</span><br><span class="hljs-comment">4、log不写底数时，通场需结合上下文判断底数，但一般规律为：通常情况下是10；</span><br><span class="hljs-comment">计算机学科中是2（在计算时间复杂度时，底数可以忽略）；而编程语言中则是e。</span><br><span class="hljs-comment"> */</span> <br><span class="hljs-title class_">Math</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">88</span>)/<span class="hljs-title class_">Math</span>.<span class="hljs-property">LN10</span> <span class="hljs-comment">// 以10为底，88的对数</span><br><span class="hljs-title class_">Math</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">88</span>)/<span class="hljs-title class_">Math</span>.<span class="hljs-property">LN2</span> <span class="hljs-comment">// 以2为底，88的对数</span><br><span class="hljs-title class_">Math</span>.<span class="hljs-title function_">exp</span>(<span class="hljs-number">3</span>) <span class="hljs-comment">// e^3,Math.E的立方</span><br></code></pre></td></tr></table></figure>
+          </div>
+<span class="label label-warning">JS中的Math对象还有很多，ES6在Math对象上又新增了一批函数，有兴趣可自行研究JS中的Math对象<sup id=fnref:2 class=footnote-ref><a href=#fn:2 rel=footnote><span class=hint--top hint--rounded aria-label=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math
+>[2]</span></a></sup></span>
+<h3 id="2-4-特殊数值">2.4 特殊数值</h3>
+<div class="note note-info">
+            <blockquote><p>1、JavaScript中的算术在遇到<code>上溢出</code>、<code>下溢出</code>或<code>被零除</code>时不会发生错误。<br>在数值操作的结果超过最大可表示数值时（上溢出），结果是一个特殊的无穷值<code>Infinity</code>。<br>2、当某个负数的绝对值超过了最大可表示负数的绝对值时，结果是负无穷值<code>-Infinity</code>。<br><span class="label label-warning">这两个无穷值的行为跟我们的预期一样：任何数<code>加、减、乘、除</code>无穷值结果还是无穷值（只是符号可能相反）。</span></p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-number">0</span>乘以<span class="hljs-title class_">Infinity</span>，返回<span class="hljs-title class_">NaN</span>；<span class="hljs-number">0</span>除以<span class="hljs-title class_">Infinity</span>，返回<span class="hljs-number">0</span>；<span class="hljs-title class_">Infinity</span>除以<span class="hljs-number">0</span>，返回<span class="hljs-title class_">Infinity</span>。<br><span class="hljs-number">0</span> * <span class="hljs-title class_">Infinity</span> <span class="hljs-comment">// NaN</span><br><span class="hljs-number">0</span> / <span class="hljs-title class_">Infinity</span> <span class="hljs-comment">// 0</span><br><span class="hljs-title class_">Infinity</span> / <span class="hljs-number">0</span> <span class="hljs-comment">// Infinity</span><br><br><span class="hljs-title class_">Infinity</span>加上或乘以<span class="hljs-title class_">Infinity</span>，返回的还是<span class="hljs-title class_">Infinity</span>。<br><span class="hljs-title class_">Infinity</span> + <span class="hljs-title class_">Infinity</span> <span class="hljs-comment">// Infinity</span><br><span class="hljs-title class_">Infinity</span> * <span class="hljs-title class_">Infinity</span> <span class="hljs-comment">// Infinity</span><br><br><span class="hljs-title class_">Infinity</span>减去或除以<span class="hljs-title class_">Infinity</span>，得到<span class="hljs-title class_">NaN</span>。<br><span class="hljs-title class_">Infinity</span> - <span class="hljs-title class_">Infinity</span> <span class="hljs-comment">// NaN</span><br><span class="hljs-title class_">Infinity</span> / <span class="hljs-title class_">Infinity</span> <span class="hljs-comment">// NaN</span><br><br><span class="hljs-title class_">Infinity</span>与<span class="hljs-literal">null</span>计算时，<span class="hljs-literal">null</span>会转成<span class="hljs-number">0</span>，等同于与<span class="hljs-number">0</span>的计算。<br><span class="hljs-literal">null</span> * <span class="hljs-title class_">Infinity</span> <span class="hljs-comment">// NaN</span><br><span class="hljs-literal">null</span> / <span class="hljs-title class_">Infinity</span> <span class="hljs-comment">// 0</span><br><span class="hljs-title class_">Infinity</span> / <span class="hljs-literal">null</span> <span class="hljs-comment">// Infinity</span><br><br><span class="hljs-title class_">Infinity</span>与<span class="hljs-literal">undefined</span>计算，返回的都是<span class="hljs-title class_">NaN</span>。<br><span class="hljs-literal">undefined</span> + <span class="hljs-title class_">Infinity</span> <span class="hljs-comment">// NaN</span><br><span class="hljs-literal">undefined</span> - <span class="hljs-title class_">Infinity</span> <span class="hljs-comment">// NaN</span><br><span class="hljs-literal">undefined</span> * <span class="hljs-title class_">Infinity</span> <span class="hljs-comment">// NaN</span><br><span class="hljs-literal">undefined</span> / <span class="hljs-title class_">Infinity</span> <span class="hljs-comment">// NaN</span><br><span class="hljs-title class_">Infinity</span> / <span class="hljs-literal">undefined</span> <span class="hljs-comment">// NaN</span><br></code></pre></td></tr></table></figure><p>3、下溢出发生在数值操作的结果比最小可表示数值更接近0的情况下。此时，JavaScript返回0。如果下溢出来自负数，JavaScript返回一个被称为“负零”的特殊值。这个值与常规的零几乎完全无法区分，几乎所有场合，正零和负零都会被当作正常的0。唯一有区别的场合是，+0或-0当作分母，返回的值是不相等的。</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js">-<span class="hljs-number">0</span> === +<span class="hljs-number">0</span> <span class="hljs-comment">// true</span><br><span class="hljs-number">0</span> === -<span class="hljs-number">0</span> <span class="hljs-comment">// true</span><br><span class="hljs-number">0</span> === +<span class="hljs-number">0</span> <span class="hljs-comment">// true</span><br>(<span class="hljs-number">1</span> / +<span class="hljs-number">0</span>) === (<span class="hljs-number">1</span> / -<span class="hljs-number">0</span>) <span class="hljs-comment">// false</span><br><span class="hljs-comment">//上面的代码之所以出现这样结果，是因为除以正零得到+Infinity，</span><br><span class="hljs-comment">//除以负零得到-Infinity，这两者是不相等的</span><br></code></pre></td></tr></table></figure><p>4、被零除在JavaScript中不是错误，只会简单地返回<code>无穷(infinity)</code>或<code>负无穷(-infinity)</code>。<br>5、不过有一个例外：<code>0/0</code>是没有意义的值，这个操作的结果是一个特殊的“非数值”（<code>NaN</code>，Not a Number）。此外，<code>无穷除无穷(infinity/infinity)</code>、<code>负数平方根(Math.sqrt(-x))</code>或者用<code>无法转换为数值</code>的非数值作为算术操作符<code>的操作数</code>，结果也都是NaN。</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-number">5</span> - <span class="hljs-string">&#x27;x&#x27;</span> <span class="hljs-comment">// NaN,代码运行时，会自动将字符串x转为数值，但是由于x不是数值，所以最后得到结果为NaN,</span><br><span class="hljs-comment">//用`无法转换为数值`的非数值作为算术操作符`的操作数`</span><br><span class="hljs-title class_">Math</span>.<span class="hljs-title function_">acos</span>(<span class="hljs-number">2</span>) <span class="hljs-comment">// NaN</span><br><span class="hljs-title class_">Math</span>.<span class="hljs-title function_">log</span>(-<span class="hljs-number">1</span>) <span class="hljs-comment">// NaN</span><br><span class="hljs-title class_">Math</span>.<span class="hljs-title function_">sqrt</span>(-<span class="hljs-number">1</span>) <span class="hljs-comment">// NaN</span><br><span class="hljs-number">0</span> / <span class="hljs-number">0</span> <span class="hljs-comment">// NaN</span><br></code></pre></td></tr></table></figure><p>6、需要注意的是，NaN不是独立的数据类型，而是一个特殊数值，它的数据类型依然属于Number，使用typeof运算符可以看得很清楚。</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">typeof</span> <span class="hljs-title class_">NaN</span> <span class="hljs-comment">// &#x27;number&#x27;</span><br></code></pre></td></tr></table></figure><p>7、NaN在布尔运算时被当作false。</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title class_">Boolean</span>(<span class="hljs-title class_">NaN</span>) <span class="hljs-comment">// false</span><br></code></pre></td></tr></table></figure><p>8、NaN与任何数（包括它自己）的运算，得到的都是NaN。</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title class_">NaN</span> + <span class="hljs-number">32</span> <span class="hljs-comment">// NaN</span><br><span class="hljs-title class_">NaN</span> - <span class="hljs-number">32</span> <span class="hljs-comment">// NaN</span><br><span class="hljs-title class_">NaN</span> * <span class="hljs-number">32</span> <span class="hljs-comment">// NaN</span><br><span class="hljs-title class_">NaN</span> / <span class="hljs-number">32</span> <span class="hljs-comment">// NaN</span><br><span class="hljs-title class_">Infinity</span> &gt; <span class="hljs-title class_">NaN</span> <span class="hljs-comment">// false</span><br>-<span class="hljs-title class_">Infinity</span> &gt; <span class="hljs-title class_">NaN</span> <span class="hljs-comment">// false</span><br><span class="hljs-title class_">Infinity</span> &lt; <span class="hljs-title class_">NaN</span> <span class="hljs-comment">// false</span><br>-<span class="hljs-title class_">Infinity</span> &lt; <span class="hljs-title class_">NaN</span> <span class="hljs-comment">// false</span><br><span class="hljs-comment">//Infinity与NaN比较，总是返回false。</span><br></code></pre></td></tr></table></figure></blockquote>
+          </div>
 <h2 id="注释："><em><strong>注释：</strong></em></h2>
 <section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://blog.silentblue.top/2022/06/10/%E6%B5%85%E8%B0%88IEEE754%E6%A0%87%E5%87%86%E7%9A%84%E6%B5%AE%E7%82%B9%E6%95%B0%E8%AF%AF%E5%B7%AE%E6%88%90%E5%9B%A0/">https://blog.silentblue.top/2022/06/10/浅谈IEEE754标准的浮点数误差成因/</a>
-<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
+<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math</a>
+<a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
               
             </div>
             <hr/>
@@ -389,6 +423,32 @@ JavaScript常量和变量是无类型的（untyped），声明并不会限定要
       <i class="iconfont icon-tags"></i>
       
         <a href="/tags/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">#数据类型</a>
+      
+        <a href="/tags/%E6%95%B0%E5%80%BC/">#数值</a>
+      
+        <a href="/tags/%E6%96%87%E6%9C%AC%E5%AD%97%E7%AC%A6%E4%B8%B2/">#文本字符串</a>
+      
+        <a href="/tags/%E5%B8%83%E5%B0%94%E5%80%BC/">#布尔值</a>
+      
+        <a href="/tags/boolean/">#boolean</a>
+      
+        <a href="/tags/undefined/">#undefined</a>
+      
+        <a href="/tags/symbol/">#symbol</a>
+      
+        <a href="/tags/%E5%AF%B9%E8%B1%A1/">#对象</a>
+      
+        <a href="/tags/math/">#math</a>
+      
+        <a href="/tags/%E6%95%B0%E5%AD%A6/">#数学</a>
+      
+        <a href="/tags/%E7%AE%97%E6%95%B0/">#算数</a>
+      
+        <a href="/tags/object/">#object</a>
+      
+        <a href="/tags/array/">#array</a>
+      
+        <a href="/tags/%E6%95%B0%E7%BB%84/">#数组</a>
       
     </div>
   
