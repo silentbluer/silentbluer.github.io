@@ -23,8 +23,9 @@
 <meta property="og:site_name" content="无稚青年睡草堂">
 <meta property="og:description" content="JavaScript数据类型可以分为两类：原始类型和对象类型。JavaScript的原始类型包括数值、文本字符串（也称字符串）和布尔真值（也称布尔值）；特殊值null和undefined也是原始值，但它们不是数值、字符串或布尔值，通常被认为是各自特殊类型的唯一成员；任何不是数值、字符串、布尔值、符号、null和undefined的值都是对象。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2022/06/16/JavaScript%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%B5%85%E6%9E%90/strtobj.jpg">
 <meta property="article:published_time" content="2022-06-16T11:53:54.000Z">
-<meta property="article:modified_time" content="2022-06-23T14:01:59.890Z">
+<meta property="article:modified_time" content="2022-06-24T06:28:44.853Z">
 <meta property="article:author" content="silentblue">
 <meta property="article:tag" content="数据类型">
 <meta property="article:tag" content="数值">
@@ -41,6 +42,7 @@
 <meta property="article:tag" content="array">
 <meta property="article:tag" content="数组">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2022/06/16/JavaScript%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%B5%85%E6%9E%90/strtobj.jpg">
   
   
   
@@ -222,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          24k 字
+          27k 字
         
       </span>
     
@@ -233,7 +235,7 @@
         
         
         
-          198 分钟
+          227 分钟
         
       </span>
     
@@ -293,6 +295,9 @@
 <li>ES6新增了一种特殊类型 <strong>Symbol</strong>（符号），用于对语言进行扩展而不破坏向后兼容性。</li>
 </ul>
 </blockquote>
+<div class="note note-warning">
+            <p>原始值是固定而简单的值，是存放在栈(stack)中的简单数据段，也就是说，它们的值直接存储在变量访问的位置。</p><p>引用值则是比较大的对象，存放在堆(heap)中的对象，也就是说，存储在变量处的值是一个指针(pointer)，指向存储对象的内存处。</p><p>所有引用类型都集成自Object。</p><p>如果一个值是引用类型的，那么它的存储空间将从堆中分配。由于引用值的大小会改变，所以不能把它放在栈中，否则会降低查询速度。相反，存放变量的栈空间中的值是该对象存储在堆中的地址。地址的大小是固定的，所以把它存放在栈中对变量性能无任何负面影响。</p><table><thead><tr><th>栈区</th><th>栈区</th><th></th><th>堆区</th></tr></thead><tbody><tr><td>person1</td><td>堆内存地址1</td><td>→</td><td>object1</td></tr><tr><td>person2</td><td>堆内存地址1</td><td>→</td><td>object2</td></tr><tr><td>person3</td><td>堆内存地址1</td><td>→</td><td>object3</td></tr></tbody></table>
+          </div>
 <h3 id="1-2-对象类型">1.2 对象类型</h3>
 <p>在JavaScript中，任何不是<strong>数值</strong>、<strong>字符串</strong>、<strong>布尔值</strong>、<strong>符号</strong>、<strong>null</strong>和<strong>undefined</strong>的值都是<strong>对象</strong>。</p>
 <p><strong>对象</strong><small>（<u>也就是对象类型的成员</u>）</small>是 <em>属性</em> 的集合，其中每个<code>属性</code>都有一个<code>名字</code>和一个<code>值</code><small>（<u>原始值或其他对象</u>）</small>。</p>
@@ -729,8 +734,8 @@ JavaScript的Date是对象，但也有数值表示形式，即自1970年1月1日
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-string">&quot;Prev \\ Next&quot;</span><br><span class="hljs-comment">// &quot;Prev \ Next&quot;</span><br></code></pre></td></tr></table></figure>
 <h3 id="3-5-存储更改">3.5 存储更改</h3>
 <p>javascript中的字符串是不可变的。一旦字符串被创建，就永远无法改变它。要改变某个变量保存的字符串，首先要销毁原来的字符串，然后再用另一个包含新值的字符串填充该变量。</p>
-<p>可以通过+运算符连接其他字符串来创建一个新字符串</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> lang = <span class="hljs-string">&quot;java&quot;</span>;<br>lang = lang + <span class="hljs-string">&quot;script&quot;</span>; <span class="hljs-comment">//&#x27;javascript&#x27;</span><br></code></pre></td></tr></table></figure>
+<p>可以通过+运算符连接其他字符串来创建一个新字符串(Symbol.toPrimitive的抽象操作)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> lang = <span class="hljs-string">&quot;java&quot;</span>;<br>lang = lang + <span class="hljs-string">&quot;script&quot;</span>; <span class="hljs-comment">//&#x27;javascript&#x27;</span><br><br><span class="hljs-string">&#x27;&#x27;</span> + [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>] <span class="hljs-comment">// &quot;1,2,3&quot;</span><br></code></pre></td></tr></table></figure>
 <blockquote>
 <p>以上代码的实际过程是：<br>
 首先创建一个能够容纳10个字符的新字符串，然后在这个字符串中填充’java’和’script’，<br>
@@ -739,40 +744,10 @@ JavaScript的Date是对象，但也有数值表示形式，即自1970年1月1日
 <p>这个过程在后台发生，也是在某些旧版本浏览器(IE6)拼接字符串速度慢的原因，但浏览器后面版本已经解决了这个低效率问题。</p>
 <h3 id="3-6-转换">3.6 转换</h3>
 <p>把一个值转换为字符串有两种方式：<code>toString()</code>和<code>String()</code>，<span class="label label-warning">可以使用空字符串"" +某个值，将该值转换为字符串。</span></p>
-<p><strong>toString()和ValueOf()</strong><br>
-所有的对象都继承有<code>toString()</code> 和 <code>valueOf()</code> 方法，对象到<u>字符串</u>，对象到<u>数字</u>的转换，会通过调用待转换对象的这两个方法中的一个来完成。</p>
-<p>第一种是使用几乎每个值都有的<code>toString()</code>方法，它的作用是返回一个反映这个对象的字符串。<span class="label label-warning">undefined和null没有该方法。</span></p>
-<p>很多类定义了更多特定版本的toString()方法。例如，数组的 toString() 方法是将每个数组元素转换为一个字符串，并在元素之间添加逗号后合并成结果字符串。</p>
-<p>函数的 toString() 方法返回了这个函数的实现定义。实际上，这里的实现是通常是将用户定义的函数转换为 JS 源代码字符串。</p>
-<p>日期 Date 的 toString() 方法返回了一个可读的日期和时间字符串。</p>
-<p>RegExp 的 toString() 方法将RegExp对象转换为表示正则表达式直接量的字符串：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-literal">undefined</span>.<span class="hljs-title function_">toString</span>();<span class="hljs-comment">//Uncaught TypeError:</span><br><span class="hljs-literal">null</span>.<span class="hljs-title function_">toString</span>();<span class="hljs-comment">//Uncaught TypeError:</span><br><span class="hljs-literal">true</span>.<span class="hljs-title function_">toString</span>();<span class="hljs-comment">//&#x27;true&#x27;</span><br><span class="hljs-literal">false</span>.<span class="hljs-title function_">toString</span>();<span class="hljs-comment">//&#x27;false&#x27;</span><br><span class="hljs-string">&#x27;abc&#x27;</span>.<span class="hljs-title function_">toString</span>();<span class="hljs-comment">//&#x27;abc&#x27;</span><br><span class="hljs-number">1.23</span>.<span class="hljs-title function_">toString</span>();<span class="hljs-comment">//&#x27;1.23&#x27;</span><br>(&#123;&#125;).<span class="hljs-title function_">toString</span>();<span class="hljs-comment">//[object Object]</span><br>(&#123;<span class="hljs-attr">x</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">y</span>:<span class="hljs-number">2</span>&#125;).<span class="hljs-title function_">toString</span>()  <span class="hljs-comment">//=&gt;&quot;[object object]&quot;</span><br>[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>].<span class="hljs-title function_">toString</span>();<span class="hljs-comment">//&#x27;1,2,3,4&#x27;</span><br>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>()).<span class="hljs-title function_">toString</span>();<span class="hljs-comment">//&#x27;Wed Jun 22 2022 22:23:45 GMT+0800 (中国标准时间)&#x27;</span><br><span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(<span class="hljs-number">2022</span>,<span class="hljs-number">6</span>,<span class="hljs-number">16</span>).<span class="hljs-title function_">toString</span>()  <span class="hljs-comment">//=&gt; &quot;Sat Jul 16 2022 00:00:00 GMT+0800 (中国标准时间)&quot;</span><br>/\d/.<span class="hljs-title function_">toString</span>();    <span class="hljs-comment">//=&gt;  &quot;/\\d/&quot;  或者 &quot;/\d/&quot; 浏览器不同返回也可能会不同</span><br><span class="hljs-title class_">Error</span>(<span class="hljs-string">&quot;一个错误信息&quot;</span>).<span class="hljs-title function_">toString</span>();    <span class="hljs-comment">//=&gt;  &quot;Error: 一个错误信息&quot;    </span><br>(<span class="hljs-keyword">function</span> (<span class="hljs-params">x</span>)&#123;<span class="hljs-keyword">return</span> x&#125;).<span class="hljs-title function_">toString</span>();   <span class="hljs-comment">//=&gt;  &quot;function (x)&#123;return x&#125;&quot;     </span><br></code></pre></td></tr></table></figure>
-<p>第二种是如果对象存在任意<code>原始值</code>，它就默认将对象转换为表示它的<code>原始值</code>，如果对象是<code>复合值</code>，而且大多数对象无法真正表示为一个原始值，因此默认的<code>valueOf()</code>方法简单地返回<code>对象本身</code>，而不是返回一个原始值。</p>
-<p>数组、函数、和正则表达式简单的继承了这个默认方法，调用这些类型的实例的valueOf( )方法只是简答返回对象本身。</p>
-<p>日期类定义的valueOf( )方法会返回它的一个内部表示：1970年1月1日以来的毫秒数。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(<span class="hljs-number">2022</span>,<span class="hljs-number">6</span>,<span class="hljs-number">16</span>).<span class="hljs-title function_">valueOf</span>() <span class="hljs-comment">// 1657900800000</span><br></code></pre></td></tr></table></figure>
-<p>通过使用 toString() 和 valueOf() 方法，就可以做到对象到字符串和对象到数字的转换了。但需要注意的是，在某些特殊的场景中，JS 执行了完全不同的对象到原始值的转换。<br>
-JS 中对象到字符串的转换经过如下这些步骤：</p>
-<blockquote>
-<ol>
-<li>如果方法 valueOf() 存在，则调用它。如果 valueOf() 返回一个原始值，JS 将这个值转换为字符串（如果本身不是字符串的话），并返回这个字符串结果。</li>
-<li>如果方法 toString() 存在，则调用它。如果 toString() 返回一个原始值，JS 将这个值转换为字符串（如果本身不是字符串的话），并返回这个字符串结果。需要注意，原始值到字符串的转换。</li>
-<li>如果JS 无法从 toString() 或 valueOf() 获得一个原始值,它将抛出一个 TypeError:不能将对象转换为原始值异常</li>
-</ol>
-</blockquote>
-<p>当调用 valueOf() 方法时，大多数原生对象都会返回对象本身。因此 toString() 方法使用得更频繁。</p>
-<p>关于 Date 对象的注意事项:在转换为原始值时，对象立即使用 toString() 方法转换为字符串。这样，规则1就被跳过了。普通的 JS 对象，{}或 new object()，通常被转换成 “[object Object]”</p>
-<p>数组通过将它的元素与“,”分隔符连接转换为。例如 [1,3，“four”] 被转换成&quot; 1,3,four&quot;。</p>
-<p><strong>String()</strong></p>
-<p>在不知道要转换的值是不是undefined或null时，可以使用转型函数String()，转型函数String()遵循下列规则：</p>
-<blockquote>
-<ol>
-<li>如果值是null，则返回’null’；如果值是undefined，则返回’undefined’；</li>
-<li>如果值不是null或undefined，则调用toString()方法并返回原始类型值；</li>
-<li>若使用toString()方法返回的是对象，则再调用valueOf()方法返回原始类型值，若使用valueOf()方法返回的是对象，会报错。</li>
-</ol>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title class_">String</span>(&#123;<span class="hljs-attr">toString</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">3</span>;<br>  &#125;<br>&#125;)<span class="hljs-comment">//&quot;3&quot;</span><br><br><span class="hljs-title class_">String</span>(&#123;<span class="hljs-attr">valueOf</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">2</span>;<br>  &#125;<br>&#125;)<span class="hljs-comment">// [object,object]</span><br><br><br><span class="hljs-title class_">String</span>(&#123;<br>  <span class="hljs-attr">valueOf</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">2</span>;<br>  &#125;,<br>  <span class="hljs-attr">toString</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">3</span>;<br>  &#125;<br>&#125;)<span class="hljs-comment">//  &quot;3&quot;</span><br></code></pre></td></tr></table></figure>
+<p><big><strong>toString()和ValueOf()</strong></big></p>
+<p>所有的对象都继承有<code>toString()</code> 和 <code>valueOf()</code> 方法，对象到<u>字符串</u>，对象到<u>数字</u>的转换，会通过调用待转换对象的这两个方法中的一个来完成。</p>
+<p><em><strong>第一种是:</strong></em> 使用几乎每个值都有的<code>toString()</code>方法，它的作用是返回一个表示该对象的字符串。<span class="label label-warning">undefined和null没有该方法。</span></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-literal">undefined</span>.<span class="hljs-title function_">toString</span>();<span class="hljs-comment">//Uncaught TypeError:</span><br><span class="hljs-literal">null</span>.<span class="hljs-title function_">toString</span>();<span class="hljs-comment">//Uncaught TypeError:</span><br><span class="hljs-literal">true</span>.<span class="hljs-title function_">toString</span>();<span class="hljs-comment">//&#x27;true&#x27;</span><br><span class="hljs-literal">false</span>.<span class="hljs-title function_">toString</span>();<span class="hljs-comment">//&#x27;false&#x27;</span><br><span class="hljs-string">&#x27;abc&#x27;</span>.<span class="hljs-title function_">toString</span>();<span class="hljs-comment">//&#x27;abc&#x27;</span><br><span class="hljs-number">1.23</span>.<span class="hljs-title function_">toString</span>();<span class="hljs-comment">//&#x27;1.23&#x27;</span><br>(&#123;&#125;).<span class="hljs-title function_">toString</span>();<span class="hljs-comment">//[object Object]</span><br>(&#123;<span class="hljs-attr">x</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">y</span>:<span class="hljs-number">2</span>&#125;).<span class="hljs-title function_">toString</span>()  <span class="hljs-comment">//=&gt;&quot;[object object]&quot;</span><br>[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>].<span class="hljs-title function_">toString</span>();<span class="hljs-comment">//&#x27;1,2,3,4&#x27;</span><br>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>()).<span class="hljs-title function_">toString</span>();<span class="hljs-comment">//&#x27;Wed Jun 22 2021 22:23:45 GMT+0800 (中国标准时间)&#x27;</span><br><span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(<span class="hljs-number">2021</span>,<span class="hljs-number">6</span>,<span class="hljs-number">16</span>).<span class="hljs-title function_">toString</span>()  <span class="hljs-comment">//=&gt; &quot;Sat Jul 16 2021 00:00:00 GMT+0800 (中国标准时间)&quot;</span><br>/\d/.<span class="hljs-title function_">toString</span>();    <span class="hljs-comment">//=&gt;  &quot;/\\d/&quot;  或者 &quot;/\d/&quot; 浏览器不同返回也可能会不同</span><br><span class="hljs-title class_">Error</span>(<span class="hljs-string">&quot;一个错误信息&quot;</span>).<span class="hljs-title function_">toString</span>();    <span class="hljs-comment">//=&gt;  &quot;Error: 一个错误信息&quot;    </span><br>(<span class="hljs-keyword">function</span> (<span class="hljs-params">x</span>)&#123;<span class="hljs-keyword">return</span> x&#125;).<span class="hljs-title function_">toString</span>();   <span class="hljs-comment">//=&gt;  &quot;function (x)&#123;return x&#125;&quot;     </span><br></code></pre></td></tr></table></figure>
 <p><strong>JavaScript类型转换表:</strong></p>
 <table>
 <thead>
@@ -790,28 +765,28 @@ JS 中对象到字符串的转换经过如下这些步骤：</p>
 <td>“undefined”</td>
 <td>NaN</td>
 <td>false</td>
-<td>throws TypeError</td>
+<td>throws ypeError</td>
 </tr>
 <tr>
 <td>null</td>
 <td>“null”</td>
 <td>0</td>
 <td>false</td>
-<td>throws TypeError</td>
+<td>throws ypeError</td>
 </tr>
 <tr>
 <td>true</td>
 <td>“true”</td>
 <td>1</td>
 <td>true</td>
-<td>new Boolean(true)</td>
+<td>new Boolea(true)</td>
 </tr>
 <tr>
 <td>false</td>
 <td>“false”</td>
 <td>0</td>
 <td>false</td>
-<td>new Boolean(false)</td>
+<td>new Boolea(false)</td>
 </tr>
 <tr>
 <td>“”</td>
@@ -913,6 +888,84 @@ JS 中对象到字符串的转换经过如下这些步骤：</p>
 </tr>
 </tbody>
 </table>
+<div class="note note-warning">
+            <p><strong>很多类定义了更多特定版本的toString()方法。</strong><br>例如，数组的 toString() 方法是将每个数组元素转换为一个字符串，并在元素之间添加逗号后合并成结果字符串。</p><p><code>函数的 toString() 方法</code>返回了这个函数的<code>实现定义</code>。实际上，这里的实现是通常是将用户定义的函数转换为 <code>JS 源代码字符串</code>。</p><p>日期 Date 的 toString() 方法返回了一个可读的日期和时间字符串。</p><p>RegExp 的 toString() 方法将RegExp对象转换为表示正则表达式直接量的字符串：</p>
+          </div>
+<p><em><strong>第二种是：</strong></em> 如果对象存在任意<code>原始值</code>，它就默认将对象转换为表示它的<code>原始值</code>，如果对象是<code>复合值</code>，而且大多数对象无法真正表示为一个原始值，因此默认的<code>valueOf()</code>方法简单地返回<code>对象本身</code>，而不是返回一个原始值。</p>
+<div class="note note-warning">
+            <p>数组、函数、和正则表达式简单的继承了这个默认方法，Array,Function,Math 和 Error 对象没有 valueOf 方法，调用这些类型的实例的valueOf( )方法只是简答返回对象本身。</p>
+          </div>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js">(&#123;&#125;).<span class="hljs-title function_">valueOf</span>();<span class="hljs-comment">//&#123;&#125;</span><br>(&#123;<span class="hljs-attr">x</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">y</span>:<span class="hljs-number">2</span>&#125;).<span class="hljs-title function_">valueOf</span>() <span class="hljs-comment">//&#123;x: 1, y: 2&#125;</span><br>(<span class="hljs-keyword">function</span> (<span class="hljs-params">x</span>)&#123;<span class="hljs-keyword">return</span> x&#125;).<span class="hljs-title function_">valueOf</span>() <span class="hljs-comment">// ƒ (x)&#123;return x&#125;</span><br><span class="hljs-title class_">Error</span>(<span class="hljs-string">&quot;一个错误信息&quot;</span>).<span class="hljs-title function_">valueOf</span>();  <span class="hljs-comment">// Error: 一个错误信息</span><br><span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(<span class="hljs-number">2022</span>,<span class="hljs-number">6</span>,<span class="hljs-number">16</span>).<span class="hljs-title function_">valueOf</span>() <span class="hljs-comment">// 1657900800000</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>每个JavaScript固有对象的 valueOf 方法定义不同。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>对象</th>
+<th>返回值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Array</td>
+<td>数组没有valueOf方法，继承的是Object.prototype.valueOf的原始方法，返回数组本身</td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td>Boolean 值。</td>
+</tr>
+<tr>
+<td>Date</td>
+<td>存储的时间是从 1970 年 1 月 1 日午夜开始计的毫秒数 UTC。</td>
+</tr>
+<tr>
+<td>Function</td>
+<td>同Array</td>
+</tr>
+<tr>
+<td>Number</td>
+<td>数字值。</td>
+</tr>
+<tr>
+<td>Object</td>
+<td>对象本身。这是默认情况。</td>
+</tr>
+<tr>
+<td>String</td>
+<td>字符串值。</td>
+</tr>
+</tbody>
+</table>
+<p>通过使用 toString() 和 valueOf() 方法，就可以做到对象到字符串和对象到数字的转换了，JS语言核心的内置类首先尝试使用valueOf()，再尝试使用toString()。需要注意的是，在某些特殊的场景中，JS 执行了完全不同的对象到原始值的转换。</p>
+<blockquote>
+<p><strong>如果传入参数是string，也就是对象到字符串的转换，经过了如下步骤：</strong><br>
+如果对象中有toString()方法，则调用这个方法。如果它返回一个原始值(undefined、Boolean、Number、String、BigInt、Symbol 和 null)，js将这个值转换为字符串(如果本身不是字符串的话)，并返回这个字符串结果。<br>
+如果对象没有toString()方法，或者toString()没有返回一个原始值，那么js会调用valueOf()方法。如果返回值是原始值，js将这个值转换为字符串，并返回字符串结果。<br>
+否则，js抛出一个类型错误异常。</p>
+</blockquote>
+<p><img src="strtobj.jpg" srcset="/img/loading.gif" lazyload alt="对象到字符串的转换"></p>
+<blockquote>
+<p><strong>如果传入参数是number/default，也就是对象到数字的转换，经过了如下步骤：</strong><br>
+和上面有点不同，到数字的转换会先尝试使用valueOf()方法:<br>
+如果对象具有valueOf()方法，后者返回一个原始值，则js会将其转换为数字(如果需要的话)并返回这个数字。<br>
+否则，如果对象具有toString()方法，返回一个原始值(字符串直接量)，则js将其转换为数字类型，并返回这个数字。<br>
+否则，js抛出一个类型错误异常。</p>
+</blockquote>
+<span class="label label-warning">注意：<br> 1、对于所有`非日期对象`来说，对象到原始值的转换基本上是`对象到数字`的转换。<br> 当调用 valueOf() 方法时，大多数原生对象都会返回对象本身。因此 toString() 方法使用得更频繁。<br> 2、关于 `Date 对象`的注意事项:在转换为原始值时，对象立即使用 `toString() 方法转换为字符串`。<br> 3、普通的 JS 对象，`{}`或 `new object()`，通常被转换成 [object Object]。<br> 4、数组通过将它的元素与“,”分隔符连接转换为。例如 [1,3，"four"] 被转换成" 1,3,four"。</span>
+<div class="note note-success">
+            <p><strong>日期对象的特殊情况：</strong><br><code>日期对象</code>在原型里自定义了<code>toString()</code>，即<code>Date.prototype.toString()</code>。</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> date = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>();<br>date.<span class="hljs-title function_">toString</span>(); <span class="hljs-comment">// =&gt; &#x27;Fri Jun 24 2021 10:48:13 GMT+0800 (中国标准时间)&#x27;</span><br></code></pre></td></tr></table></figure><p>Date 对象覆盖了从 Object 继承来的<code>Object.prototype.toString()</code> 方法。Date的<code>toString() </code>方法总是返回一个美式英语日期格式的字符串。当一个<code>日期对象</code>被用来作为<code>文本值</code>或用来进行<code>字符串连接</code>时，<code>toString()</code> 方法会被自动调用。</p><p>“<code>+</code>” 和 “<code>==</code>” 应用的<code>对象到原始值</code>的转换包含日期对象的一种特殊情形。</p><p>日期类是JavaScript语言核心中<code>唯一</code>的预先定义类型，它定义了有意义的向字符串和数字类型的转换。</p><p>对于所有非日期的对象来说， 对象到原始值的转换基本上是对象到数字的转换（<code>首先调用valueOf()</code>) , 日期对象则使用对象到字符串的转换模式，然而，这里的转换和上文讲述的井不完全一致：通过<code>valueOf()</code>或<code>toString()</code>返回的原始值将被直接使用，而不会被强制转换为<code>数字</code>或<code>字符串</code>。</p><p>和&quot;<code>==</code>&quot; 一样， ＂<code>＜</code>” 运算符以及其他关系运算符也会做对象到原始值的转换， 但要除去日期对象的特殊情形：任何对象都会首先尝试调用valueOf(), 然后调用toString()。不管得到的原始值是否直接使用，它都不会进一步被转换为数字或字符串。</p><p>“<code>+</code>”、 “<code>==</code>”、 “<code>!=</code>” 和<code>关系运算符</code>是唯一执行这种特殊的字符串到原始值的转换方式的运算符。 其他运算符到特定类型的转换都很明确，而且对日期对象来讲也没有特殊情况。 例如 &quot; <code>-</code>  (减号）运算符把它的两个操作数都转换为数字。</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> now = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>();    <span class="hljs-comment">// 当前时间</span><br><span class="hljs-keyword">typeof</span> (now + <span class="hljs-number">1</span>);         <span class="hljs-comment">// &quot;string&quot;</span><br><span class="hljs-keyword">typeof</span> (now - <span class="hljs-number">1</span>)；       <span class="hljs-comment">// &quot;number&quot;</span><br>now == now. <span class="hljs-title function_">toString</span>()； <span class="hljs-comment">// true</span><br>now &gt; (now -<span class="hljs-number">1</span>)；         <span class="hljs-comment">// true</span><br><br><span class="hljs-keyword">var</span> now = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>();  <br>now + <span class="hljs-number">1</span><br><span class="hljs-comment">//&#x27;Fri Oct 01 2021 10:58:55 GMT+0800 (中国标准时间)1&#x27;</span><br>now - <span class="hljs-number">1</span><br><span class="hljs-comment">// 1633057135763</span><br></code></pre></td></tr></table></figure><p><strong>字符串连接符与算术隐式转换规则混淆:</strong></p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">1</span> + <span class="hljs-literal">true</span>);      <span class="hljs-comment">//2</span><br><span class="hljs-comment">//+做为算术运算符会把其他数据类型调用Number()转成数字然后做加法运算,布尔值true会被转换数字 1;</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">1</span> + <span class="hljs-string">&quot;true&quot;</span>);        <span class="hljs-comment">//&quot;1true&quot;,</span><br><span class="hljs-comment">//+两边有一边是字符串，那这个+就是字符串连接符，它会把其他数据类型调用String()方法转成字符串然后拼接；</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">1</span> + <span class="hljs-literal">undefined</span>);     <span class="hljs-comment">//NaN,undefined会被转换为 NaN，</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">1</span> + <span class="hljs-literal">null</span>);      <span class="hljs-comment">//1,null会转换为数字 0</span><br><br><span class="hljs-comment">//大坑</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-property">log</span> ( [] == <span class="hljs-number">0</span> );        <span class="hljs-comment">//true</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-property">log</span> ( ! [] == <span class="hljs-number">0</span> );      <span class="hljs-comment">//true</span><br><span class="hljs-comment">//神坑</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-property">log</span> ( [] == ! [] );     <span class="hljs-comment">//true</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-property">log</span> ( [] == [] );       <span class="hljs-comment">//false</span><br><span class="hljs-comment">//史诗级坑</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(&#123;&#125; == !&#123;&#125;);     <span class="hljs-comment">//false</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(&#123;&#125; == &#123;&#125;);      <span class="hljs-comment">//false</span><br></code></pre></td></tr></table></figure><p><code>[]</code> 与 <code>0</code>比较：<br>（1）[].valueOf().toString() 得到空字符串<br>（2）Number(“”) == 0 成立</p><p><code>![] </code>与 <code>0</code>比较：<br>（1）逻辑非优先级高于关系运算符 ![] = false (空数组转布尔得到true，然后取反得到false)<br>（2）false == 0 成立</p><p><code>[]</code> 与 <code>![]</code>比较：<br>（1） [].valueOf().toString() 得到空字符串 “”<br>（2） ![] = false<br>（3） Number(“”) == Number(false) 成立 都是0</p><p><code>[]</code> 与 <code>[]</code>比较：<br>引用类型数据存在<code>堆内存</code>中，<code>栈内存</code>中存储的是<code>地址</code>，所以他们的结果是false</p><p><code>{}</code> 与 <code>!{}</code>比较：<br>（1） {}.valueOf().toString() 得到字符串’[object Object]’<br>（2） !{} = false<br>（3） Number(‘[object Object]’) == Number(false) 不成立，因为转换到最后 是NaN 和 0比较，所以结果为 false</p><p><code>{}</code> 与 <code>{}</code>比较：<br>引用类型数据存在堆内存中，栈内存中存储的是地址，所以他们的结果是false</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js">&#123;&#125;+[]<br><span class="hljs-comment">//0</span><br></code></pre></td></tr></table></figure><p>空对象加空数组就不一样了，加号运算符的定义是这样的：如果其中一个是字符串，另一个也会被转换为字符串，否则两个运算数都被转换为数字。 而同时，javascript有这样的特性，如果{}既可以被认为是代码块，又可以被认为是对象字面量，那么js会把他当做代码块来看待。<br>这就很好解释了，{}被当做了代码块，只有+[]，根据加法的定义，被转换为0，就得到了结果。</p><p><strong>{}和[]的 valueOf() 和 toString() 的结果是什么？</strong></p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js">([]).<span class="hljs-title function_">valueOf</span>() <span class="hljs-comment">//[]</span><br>([]).<span class="hljs-title function_">toString</span>() <span class="hljs-comment">// &#x27;&#x27;</span><br>(&#123;&#125;).<span class="hljs-title function_">valueOf</span>()<span class="hljs-comment">//&#123;&#125;</span><br>(&#123;&#125;).<span class="hljs-title function_">toString</span>()<span class="hljs-comment">//&#x27;[object Object]&#x27;</span><br></code></pre></td></tr></table></figure>
+          </div>
+<p><br><big><strong>String()</strong></big></p>
+<p>在不知道要转换的值是不是undefined或null时，可以使用转型函数String()，转型函数String()遵循下列规则：</p>
+<blockquote>
+<ol>
+<li>如果值是null，则返回’null’；如果值是undefined，则返回’undefined’；</li>
+<li>如果值不是null或undefined，则调用toString()方法并返回原始类型值；</li>
+<li>若使用toString()方法返回的是对象，则再调用valueOf()方法返回原始类型值，若使用valueOf()方法返回的是对象，会报错。</li>
+</ol>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title class_">String</span>(&#123;<span class="hljs-attr">toString</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">3</span>;<br>  &#125;<br>&#125;)<span class="hljs-comment">//&quot;3&quot;</span><br><br><span class="hljs-title class_">String</span>(&#123;<span class="hljs-attr">valueOf</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">2</span>;<br>  &#125;<br>&#125;)<span class="hljs-comment">// [object,object]</span><br><br><br><span class="hljs-title class_">String</span>(&#123;<br>  <span class="hljs-attr">valueOf</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">2</span>;<br>  &#125;,<br>  <span class="hljs-attr">toString</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">3</span>;<br>  &#125;<br>&#125;)<span class="hljs-comment">//  &quot;3&quot;</span><br></code></pre></td></tr></table></figure>
 <h2 id="注释："><em><strong>注释：</strong></em></h2>
 <section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://blog.silentblue.top/2022/06/10/%E6%B5%85%E8%B0%88IEEE754%E6%A0%87%E5%87%86%E7%9A%84%E6%B5%AE%E7%82%B9%E6%95%B0%E8%AF%AF%E5%B7%AE%E6%88%90%E5%9B%A0/">https://blog.silentblue.top/2022/06/10/浅谈IEEE754标准的浮点数误差成因/</a>
 <a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math</a>
