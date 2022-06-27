@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2022/06/16/JavaScript%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%B5%85%E6%9E%90/strtobj.jpg">
 <meta property="article:published_time" content="2022-06-16T11:53:54.000Z">
-<meta property="article:modified_time" content="2022-06-27T00:39:45.105Z">
+<meta property="article:modified_time" content="2022-06-27T11:35:40.962Z">
 <meta property="article:author" content="silentblue">
 <meta property="article:tag" content="数据类型">
 <meta property="article:tag" content="数值">
@@ -672,7 +672,7 @@ BigInt是一种新的数据类型，用于当整数值大于Number数据类型�
 <p>JavaScript为表示和操作与日期及时间相关的数据而定义了简单的Date类。<br>
 JavaScript的Date是对象，但也有数值表示形式，即自1970年1月1日起至今的<code>毫秒数</code>，也叫<code>时间戳</code>：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> timestamp = <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>();<span class="hljs-comment">//当前时间的时间戳（Number）</span><br><span class="hljs-keyword">let</span> now = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(); <span class="hljs-comment">//当前时间的日期对象</span><br><span class="hljs-keyword">let</span> ms=now.<span class="hljs-title function_">getTime</span>(); <span class="hljs-comment">//转化为毫秒时间戳</span><br><span class="hljs-keyword">let</span> iso = now.<span class="hljs-title function_">toIOSString</span>();<span class="hljs-comment">//转化为标准格式字符串</span><br></code></pre></td></tr></table></figure>
-<h2 id="3-文本字符串">3. 文本字符串</h2>
+<h2 id="3-字符串">3. 字符串</h2>
 <ul>
 <li>JavaScript中表示文本的类型是String，即字符串。</li>
 <li>字符串String类型是由引号括起来的一组由16位Unicode字符组成的不可修改的字符有序序列，其中每个值都表示一个Unicode字符。</li>
