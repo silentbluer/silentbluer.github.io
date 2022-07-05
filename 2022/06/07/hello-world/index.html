@@ -16,27 +16,21 @@
   <meta name="author" content="silentblue">
   <meta name="keywords" content="">
   
-    <meta name="description" content="IEEE754标准中规定float单精度浮点数在机器中表示用 1 位表示数字的符号，用 8 位来表示指数，用23 位来表示尾数，即小数部分。对于double双精度浮点数，用 1 位表示符号，用 11 位表示指数，52 位表示尾数，其中指数域称为阶码。">
+    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浅谈IEEE 754标准的浮点数误差成因">
-<meta property="og:url" content="http://example.com/2022/06/10/%E6%B5%85%E8%B0%88IEEE754%E6%A0%87%E5%87%86%E7%9A%84%E6%B5%AE%E7%82%B9%E6%95%B0%E8%AF%AF%E5%B7%AE%E6%88%90%E5%9B%A0/index.html">
+<meta property="og:title" content="Hello World">
+<meta property="og:url" content="http://example.com/2022/06/07/hello-world/index.html">
 <meta property="og:site_name" content="无稚青年睡草堂">
-<meta property="og:description" content="IEEE754标准中规定float单精度浮点数在机器中表示用 1 位表示数字的符号，用 8 位来表示指数，用23 位来表示尾数，即小数部分。对于double双精度浮点数，用 1 位表示符号，用 11 位表示指数，52 位表示尾数，其中指数域称为阶码。">
+<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2022/06/10/%E6%B5%85%E8%B0%88IEEE754%E6%A0%87%E5%87%86%E7%9A%84%E6%B5%AE%E7%82%B9%E6%95%B0%E8%AF%AF%E5%B7%AE%E6%88%90%E5%9B%A0/1-1.jpg">
-<meta property="og:image" content="http://example.com/2022/06/10/%E6%B5%85%E8%B0%88IEEE754%E6%A0%87%E5%87%86%E7%9A%84%E6%B5%AE%E7%82%B9%E6%95%B0%E8%AF%AF%E5%B7%AE%E6%88%90%E5%9B%A0/1-2.jpg">
-<meta property="og:image" content="http://example.com/2022/06/10/%E6%B5%85%E8%B0%88IEEE754%E6%A0%87%E5%87%86%E7%9A%84%E6%B5%AE%E7%82%B9%E6%95%B0%E8%AF%AF%E5%B7%AE%E6%88%90%E5%9B%A0/2.jpg">
-<meta property="article:published_time" content="2022-06-10T05:20:44.000Z">
-<meta property="article:modified_time" content="2022-06-12T14:59:49.003Z">
+<meta property="article:published_time" content="2022-06-07T07:42:24.389Z">
+<meta property="article:modified_time" content="2022-06-07T07:42:24.389Z">
 <meta property="article:author" content="silentblue">
-<meta property="article:tag" content="IEEE754">
-<meta property="article:tag" content="浮点数">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2022/06/10/%E6%B5%85%E8%B0%88IEEE754%E6%A0%87%E5%87%86%E7%9A%84%E6%B5%AE%E7%82%B9%E6%95%B0%E8%AF%AF%E5%B7%AE%E6%88%90%E5%9B%A0/1-1.jpg">
   
   
   
-  <title>浅谈IEEE 754标准的浮点数误差成因 - 无稚青年睡草堂</title>
+  <title>Hello World - 无稚青年睡草堂</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -191,7 +185,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="浅谈IEEE 754标准的浮点数误差成因"></span>
+            <span id="subtitle" data-typed-text="Hello World"></span>
           
         </div>
 
@@ -202,8 +196,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-06-10 13:20" pubdate>
-          2022年6月10日 下午
+        <time datetime="2022-06-07 15:42" pubdate>
+          2022年6月7日 下午
         </time>
       </span>
     
@@ -214,7 +208,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.6k 字
+          367 字
         
       </span>
     
@@ -225,7 +219,7 @@
         
         
         
-          30 分钟
+          4 分钟
         
       </span>
     
@@ -271,124 +265,24 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">浅谈IEEE 754标准的浮点数误差成因</h1>
+            <h1 style="display: none">Hello World</h1>
             
             <div class="markdown-body">
               
-              <h2 id="1-IEEE-754标准的产生">1. IEEE 754标准的产生</h2>
-<p>20 世纪 80 年代（没有制定 IEEE 754 标准）之前，业界还没有一个统一的浮点数标准。相反，很多计算机制造商根据自己的需要来设计自己的浮点数表示规则，以及浮点数的执行运算细节。另外，他们常常并不太关注运算的精确性，而把实现的速度和简易性看得比数字的精确性更重要，而这就给代码的可移植性造成了重大的障碍。</p>
-<p>直到 1976 年，Intel 公司打算为其 8086 微处理器引进一种浮点数协处理器时，意识到作为芯片设计者的电子工程师和固体物理学家也许并不能通过数值分析来选择最合理的浮点数二进制格式。于是，他们邀请加州大学伯克利分校的 William Kahan 教授（当时最优秀的数值分析家）来为 8087 浮点处理器（FPU）设计浮点数格式。而这时，William Kahan 教授又找来两个专家协助他，于是就有了 KCS 组合（Kahn、Coonan和Stone），并共同完成了 Intel 公司的浮点数格式设计。</p>
-<p>由于 Intel 公司的 KCS 浮点数格式完成得如此出色，以致 IEEE（Institute of Electrical and Electronics Engineers，电子电气工程师协会）决定采用一个非常接近 KCS 的方案作为 IEEE 的标准浮点格式。于是，IEEE 于 1985 年制订了二进制浮点运算标准 IEEE 754（IEEE Standard for Binary Floating-Point Arithmetic，ANSI/IEEE Std 754-1985），该标准限定指数的底为 2，并于同年被美国引用为 ANSI 标准。目前，几乎所有的计算机都支持 IEEE 754 标准，它大大地改善了科学应用程序的可移植性。</p>
-<p>考虑到 IBM System/370 的影响，IEEE 于 1987 年推出了与底数无关的二进制浮点运算标准 IEEE 854，并于同年被美国引用为 ANSI 标准。1989 年，国际标准组织 IEC 批准 IEEE 754/854 为国际标准 IEC 559：1989。后来经修订后，标准号改为 IEC 60559。现在，几乎所有的浮点处理器完全或基本支持 IEC 60559。同时，C99 的浮点运算也支持 IEC 60559。</p>
-<h2 id="2-标准浮点格式">2. 标准浮点格式</h2>
-<p>IEEE 754标准准确地定义了单精度和双精度浮点格式，并为这两种基本格式分别定义了扩展格式，如下所示：</p>
-<blockquote>
-<ul>
-<li>单精度浮点格式（32 位）。</li>
-<li>双精度浮点格式（64 位）。</li>
-<li>扩展单精度浮点格式（≥43 位，不常用）。</li>
-<li>扩展双精度浮点格式（≥79 位，一般情况下，Intel x86 结构的计算机采用的是 80 位，而 SPARC 结构的计算机采用的是 128 位）。</li>
-</ul>
-</blockquote>
-<p>其中，只有 32 位单精度浮点数是本标准强烈要求支持的，其他都是可选部分。本文主要针对单精度浮点与双精度浮点的存储格式做一些简要的阐述。</p>
-<h3 id="2-1-什么是浮点误差">2.1 什么是浮点误差</h3>
-<p>很多人在写代码时中都曾经遇到过所谓的浮点误差，以js为例来看0.1+0.2结果是什么：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;浮点误差：&quot;</span> + <span class="hljs-string">&quot;\n&quot;</span> + <span class="hljs-string">&quot;0.1+0.2=&quot;</span> + <span class="hljs-string">&quot;\n&quot;</span> + (<span class="hljs-number">0.1</span> + <span class="hljs-number">0.2</span>));<br><span class="hljs-comment">//浮点误差：</span><br><span class="hljs-comment">//0.1+0.2=</span><br><span class="hljs-comment">//0.30000000000000004</span><br></code></pre></td></tr></table></figure>
-<p>正常情况下应该是0.1+0.2=0.3，但为什么运算结果却不是呢，这并不是什么bug，也并不是程序设计有问题，这个原因与浮点数的存储原理有关。在开始了解浮点数的存储原理前，需要先知道js中数值是以何种形式存储的。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs info">JavaScript 内部，所有数字都是以64位浮点数形式储存，即使整数也是如此。<br>所以，1与1.0是相同的，是同一个数。<br><br>1 === 1.0 // true<br><br>这就是说，JavaScript 语言的底层根本没有整数，所有数字都是小数（64位浮点数）。<br>容易造成混淆的是，某些运算只有整数才能完成，此时 JavaScript 会自动把64位浮点数，转成32位整数，<br>然后再进行运算。<br><br>由于浮点数不是精确的值，所以js中涉及小数的比较和运算要特别小心。<br></code></pre></td></tr></table></figure>
-<h3 id="2-2-计算机中是如何存储整数的">2.2 计算机中是如何存储整数的</h3>
-<p>在了解为什么会产生浮点误差前，我们先了解一下计算机是如何用0和1来表示一个整数的。我们知道计算机主要是采用二进制计算和存储数据的，我们假设一个<code>32bit</code>的无符号整数（unsigned integer），那么就是说它有32个位置来存放0或1，那么它的值的范围就是0~2<sup>32</sup>-1，即0~4294967295，也就是说它可以精确的表达出0~4294967295之间任意整数而不会有误差。</p>
-<p>同时，我们可以看得出虽然0~2<sup>32</sup>有很多整数，但个数毕竟是有限的，但是浮点数就不同了，它可以有例如，2.1，2.11，2.111…等等无数个浮点数。那么该如何把这些无限的浮点数塞进有限的<code>32bit</code>的空间里呢，在IEEE 754标准诞生前，各个CPU厂家发明了各种浮点数的表示方法，后来则是统一遵循这个标准进行设计。</p>
-<h3 id="2-3-浮点数格式的正规化">2.3 浮点数格式的正规化</h3>
-<p>浮点数在存储之前必需先进行符合IEEE 754的格式的正规化操作，即由一个有效数字乘以2的整数次幂得到,类似于十进制的科学计数法，下面举例说明：</p>
-<blockquote>
-<p>浮点数5.5如何进行格式正规化：<br>
-5.5=5+0.5<br>
-转化为二进制：<br>
-2<sup>2</sup>+2<sup>1</sup>+2<sup>-1</sup> 即 101.1<br>
-格式正规化：<br>
-1.011×2<sup>2</sup></p>
-</blockquote>
-<h3 id="2-4-十进制与二进制的转化">2.4 十进制与二进制的转化</h3>
-<p>十进制数值转化为二进制方法之一：整数部分为留余数，倒排序；小数部分为乘以2，一直到全部转化整数为止，正排序。也可使用<a target="_blank" rel="noopener" href="https://tool.oschina.net/hexconvert">在线进制转换工具</a></p>
-<blockquote>
-<p>十进制8.125转化为二进制：<br>
-整数部分：<br>
-8÷2=4 余数 <code>0</code>；4÷2=2 余数 <code>0</code>；2÷2=1 余数 <code>0</code>；最后剩余 <code>1</code>；倒排序二进制表示为 <code>1000</code><br>
-小数部分：<br>
-0.125×2=0.25 整数部分 <code>0</code>；0.25×2=0.5 整数部分 <code>0</code>；0.5×2=1 整数部分 <code>1</code>；正序二进制表示为 <code>001</code><br>
-因此十进制<code>8.125</code>转化为二进制为 <code>1000.001</code></p>
-</blockquote>
-<h3 id="2-5-浮点数的表示法">2.5 浮点数的表示法</h3>
-<p>一个浮点数分为三个部分，分别是符号位（sign bit），指数偏移值(exponent bias)，分数值(fraction)。浮点数的值(value)=符号位（sign bit）×指数偏移值(exponent bias)×有效数(fraction)。</p>
-<blockquote>
-<p>符号(S) :用來表示正/负(0/1)。<br>
-指数(E) :浮点数正规化后的次方，单精度的指数部分采用超127格式，即将原本的次方数加上127，因为次方数有可能是负的，加上计算机要表示负号时，必须拿一个位元来表示，所以就将-128~+127改为0~255，所以基准点就从0变成127。双精度的指数部分是−1022～+1023加上1023，指数值的大小从1～2046（0（2进位全为0）和2047（2进位全为1）是特殊值）。浮点小数计算时，指数值减去偏正值将是实际的指数大小。<br>
-有效数(F) :正规化后小数点之后的值。</p>
-</blockquote>
-<h4 id="单精度浮点数-float">单精度浮点数(float)</h4>
-<p><img src="1-1.jpg" srcset="/img/loading.gif" lazyload alt="单精度浮点数表示法"><br>
-sign：最左侧<code>1bit</code> 代表正负号，正数的话<code>sign</code>就为<code>0</code>，反之则是 <code>1</code><br>
-exponent：中间的<code>8bit</code>代表正规化后的次方数，采用的是<code>超127格式</code>，也就是<code>次方数</code>还要再加上<code>127</code><br>
-fraction：最右侧的<code>23bit</code> 放的是小数部分，以<code>1.0001</code>来说就是去掉<code>1.</code>之后的<code>0001</code></p>
-<p>我们以<code>8.125</code>为例，表示成IEEE 754标准的<code>32bit</code>格式：</p>
-<blockquote>
-<p>正规化：8.125=+1.000001×2<sup>3</sup></p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>Sign</th>
-<th>Exponent</th>
-<th>Fraction</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0 (+)</td>
-<td>1000 0010 (3+127=130)</td>
-<td>0000 0100 0000 0000 0000 000</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>二进制表示：0100 0001 0000 0010 0000 00000 0000 0000</p>
-</blockquote>
-<p>0.1 + 0.2 != 0.3的原因就在于0.1、0.2和0.3分别用二进制表示时，均无法转化成2的次方数相加，最后产生不同误差。</p>
-<p>有兴趣可以到<a target="_blank" rel="noopener" href="https://www.h-schmidt.net/FloatConverter/IEEE754.html">IEEE-754 Floating Point Converter</a>官网测试。</p>
-<h4 id="双精度浮点数-double">双精度浮点数(double)</h4>
-<p>为了让误差更小，<code>IEEE 754</code>也定义了如何用<code>64bit</code>来表示浮点数，跟<code>32bit</code>比起来<code>fraction</code>部分大了超过两倍，从<code>23bit</code>变成<code>52bit</code>，所以精准度自然提高许多。</p>
-<p><img src="1-2.jpg" srcset="/img/loading.gif" lazyload alt="双精度浮点数表示法"><br>
-sign：最左侧<code>1bit</code> 代表正负号，正数的话<code>sign</code>就为<code>0</code>，反之则是 <code>1</code><br>
-exponent：中间的<code>1bit</code>代表正规化后的次方数，采用的是<code>超1023格式</code>，也就是<code>次方数</code>还要再加上<code>1023</code><br>
-fraction：最右侧的<code>52bit</code> 放的是小数部分，以<code>1.0001</code>来说就是去掉<code>1.</code>之后的<code>0001</code></p>
-<p><img src="2.jpg" srcset="/img/loading.gif" lazyload alt="单双精度浮点数的对比"></p>
-<h3 id="2-6-如何解决浮点数误差">2.6 如何解决浮点数误差</h3>
-<p>1、设定一个最大允许误差值（EPSILON）<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number/EPSILON">例如ES6中内置的Number.EPSILON</a></p>
-<blockquote>
-<p>例如把 0.1 + 0.2 == 0.3改写成 0.1 + 0.2 — 0.3 &lt;= epsilon</p>
-</blockquote>
-<p>2、完全使用十进制进行计算，但不建议大规模使用，因为十进制计算是组件模拟出来的，CPU计算时仍会转化为二进制，会拖慢运算速度。</p>
-<!-- $$
-E=mc^2
-$$ -->
-<!-- ```mermaid -->
-<!-- classDiagram
-Class01 <|-- AveryLongClass : Cool
-Class03 *-- Class04
-Class05 o-- Class06
-Class07 .. Class08
-Class09 --|> C2 : Where am i?
-Class09 --* C3
-Class09 --|> Class07
-Class07 : equals()
-Class07 : Object[] elementData
-Class01 : size()
-Class01 : int chimp
-Class01 : int gorilla
-Class08 <--|> C2: Cool label -->
-<!-- ``` -->
-<!-- <a class="btn" href="url" title="title">text</a> -->
+              <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start">Quick Start</h2>
+<h3 id="Create-a-new-post">Create a new post</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server">Run server</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files">Generate static files</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites">Deploy to remote sites</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 
               
             </div>
@@ -396,53 +290,6 @@ Class08 <--|> C2: Cool label -->
             <div>
               <div class="post-metas my-3">
   
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/JavaScript/" class="category-chain-item">JavaScript</a>
-  
-  
-
-      </span>
-    
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">学习笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/js/" class="category-chain-item">js</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/IEEE754/">#IEEE754</a>
-      
-        <a href="/tags/%E6%B5%AE%E7%82%B9%E6%95%B0/">#浮点数</a>
-      
-    </div>
   
 </div>
 
@@ -452,8 +299,8 @@ Class08 <--|> C2: Cool label -->
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>浅谈IEEE 754标准的浮点数误差成因</div>
-      <div>http://example.com/2022/06/10/浅谈IEEE754标准的浮点数误差成因/</div>
+      <div>Hello World</div>
+      <div>http://example.com/2022/06/07/hello-world/</div>
     </div>
     <div class="license-meta">
       
@@ -465,7 +312,7 @@ Class08 <--|> C2: Cool label -->
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年6月10日</div>
+          <div>2022年6月7日</div>
         </div>
       
       
@@ -495,21 +342,15 @@ Class08 <--|> C2: Cool label -->
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/06/12/Javascript%E4%B8%AD%E4%BD%BF%E7%94%A8%E4%B8%A5%E6%A0%BC%E7%9B%B8%E7%AD%89%E8%BF%90%E7%AE%97%E7%AC%A6%E7%9A%84%E5%87%BD%E6%95%B0%E5%92%8C%E6%96%B9%E6%B3%95/" title="JavaScript中相等和严格相等运算符的简要比较">
+                      <a href="/2022/06/07/%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5%E5%92%8C%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5/" title="条件语句和循环语句">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">JavaScript中相等和严格相等运算符的简要比较</span>
+                        <span class="hidden-mobile">条件语句和循环语句</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
-                    
-                      <a href="/2022/06/10/IEEE754/" title="IEEE754">
-                        <span class="hidden-mobile">IEEE754</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
                     
                   </article>
                 </div>
