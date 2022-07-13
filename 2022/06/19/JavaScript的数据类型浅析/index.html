@@ -19,13 +19,13 @@
     <meta name="description" content="JavaScript数据类型可以分为两类：原始类型和对象类型。JavaScript的原始类型包括数值、文本字符串（也称字符串）和布尔真值（也称布尔值）；特殊值null和undefined也是原始值，但它们不是数值、字符串或布尔值，通常被认为是各自特殊类型的唯一成员；任何不是数值、字符串、布尔值、符号、null和undefined的值都是对象。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript的数据类型浅析">
-<meta property="og:url" content="http://example.com/2022/06/16/JavaScript%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%B5%85%E6%9E%90/index.html">
+<meta property="og:url" content="http://example.com/2022/06/19/JavaScript%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%B5%85%E6%9E%90/index.html">
 <meta property="og:site_name" content="无稚青年睡草堂">
 <meta property="og:description" content="JavaScript数据类型可以分为两类：原始类型和对象类型。JavaScript的原始类型包括数值、文本字符串（也称字符串）和布尔真值（也称布尔值）；特殊值null和undefined也是原始值，但它们不是数值、字符串或布尔值，通常被认为是各自特殊类型的唯一成员；任何不是数值、字符串、布尔值、符号、null和undefined的值都是对象。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2022/06/16/JavaScript%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%B5%85%E6%9E%90/strtobj.jpg">
-<meta property="article:published_time" content="2022-06-16T11:53:54.000Z">
-<meta property="article:modified_time" content="2022-07-12T15:54:26.566Z">
+<meta property="og:image" content="http://example.com/2022/06/19/JavaScript%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%B5%85%E6%9E%90/strtobj.jpg">
+<meta property="article:published_time" content="2022-06-19T11:53:54.000Z">
+<meta property="article:modified_time" content="2022-07-13T15:33:05.601Z">
 <meta property="article:author" content="silentblue">
 <meta property="article:tag" content="数据类型">
 <meta property="article:tag" content="数值">
@@ -42,7 +42,7 @@
 <meta property="article:tag" content="array">
 <meta property="article:tag" content="数组">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2022/06/16/JavaScript%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%B5%85%E6%9E%90/strtobj.jpg">
+<meta name="twitter:image" content="http://example.com/2022/06/19/JavaScript%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%B5%85%E6%9E%90/strtobj.jpg">
   
   
   
@@ -212,8 +212,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-06-16 19:53" pubdate>
-          2022年6月16日 晚上
+        <time datetime="2022-06-19 19:53" pubdate>
+          2022年6月19日 晚上
         </time>
       </span>
     
@@ -224,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          38k 字
+          44k 字
         
       </span>
     
@@ -235,7 +235,7 @@
         
         
         
-          317 分钟
+          367 分钟
         
       </span>
     
@@ -1021,12 +1021,68 @@ NFKD，表示“兼容等价分解”（Normalization Form Compatibility Decompo
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">foo</span>(<span class="hljs-params">str</span>) &#123;<br>    <span class="hljs-keyword">var</span> name = <span class="hljs-string">&quot;foo&quot;</span>;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>( str );<br>&#125;<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">bar</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">var</span> name = <span class="hljs-string">&quot;bar&quot;</span>;<br>    <span class="hljs-title function_">foo</span>( <span class="hljs-string">`Hello from <span class="hljs-subst">$&#123;name&#125;</span>!`</span> );<br>&#125;<br><br><span class="hljs-keyword">var</span> name = <span class="hljs-string">&quot;global&quot;</span>;<br><br><span class="hljs-title function_">bar</span>();       <span class="hljs-comment">//Hello from bar!</span><br></code></pre></td></tr></table></figure>
 <p>在函数bar()内部，字符串字面量<code>..</code> 被表达的那一刻，可供它查找的作用域发现变量的name的值为&quot;bar&quot;。既不是全局的name也不是foo(…)的name。</p>
 <p>换句话说，一个插值型字符串字面量在它出现的地方是它的词法作用域，而不是其他任何方式的动态作用域。</p>
-<p><big><strong>标签模板（标签型模板字面量）</strong></big></p>
+<p><big><strong>标签模板（标签型模板字面量）</strong></big><br>
+模板字面量虽然强大，但也有它的局限性，例如下面两点：</p>
+<blockquote>
+<p>（1）有可能会遭受XSS（跨站脚本攻击）攻击，因为无法转义HTML中的特殊字符（例如“&lt;”、“&gt;”等）。<br>
+（2）不能替代模板引擎（例如Mustache、Handlebars等），因为无法在占位符中使用if、while等语句。</p>
+</blockquote>
+<p>为了解决上述问题，ES6引入了标签模板（Tagged Template）。标签模板并不是模板，而是一种特殊方式的函数调用，如下所示。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">func<span class="hljs-string">`&lt;p&gt;<span class="hljs-subst">$&#123;name&#125;</span>&lt;/p&gt;&lt;p&gt;<span class="hljs-subst">$&#123;age&#125;</span>&lt;/p&gt;`</span><br></code></pre></td></tr></table></figure>
+<p>调用func()函数的时候省略了圆括号，函数名后面直接跟模板字面量，这就是标签模板的调用方式。它一般会包含两个参数，第一个是由没有被替换的部分组成的数组，第二个是剩余参数，包含了所有占位符中的计算结果。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//eg1</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">func</span>(<span class="hljs-params">literals, ...substitutions</span>) &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(literals);          <span class="hljs-comment">//[&quot;&lt;p&gt;&quot;, &quot;&lt;/p&gt;&lt;p&gt;&quot;, &quot;&lt;/p&gt;&quot;, raw]</span><br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(substitutions);     <span class="hljs-comment">//[&quot;strick&quot;, 29]</span><br>&#125;<br><span class="hljs-keyword">var</span> name = <span class="hljs-string">&quot;strick&quot;</span>,<br>  age = <span class="hljs-number">29</span>;<br>func<span class="hljs-string">`&lt;p&gt;<span class="hljs-subst">$&#123;name&#125;</span>&lt;/p&gt;&lt;p&gt;<span class="hljs-subst">$&#123;age&#125;</span>&lt;/p&gt;`</span>;<br><br><span class="hljs-comment">//eg2</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">foo</span>(<span class="hljs-params">strings, ...values</span>) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>( strings );<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>( values );<br>&#125;<br><span class="hljs-keyword">var</span> desc = <span class="hljs-string">&quot;awesome&quot;</span>;<br>foo<span class="hljs-string">`Everything is <span class="hljs-subst">$&#123;desc&#125;</span>!`</span>;<br><span class="hljs-comment">// [ &#x27;Everything is &#x27;, &#x27;!&#x27;, raw]</span><br><span class="hljs-comment">// [ &quot;awesome&quot; ]</span><br></code></pre></td></tr></table></figure>
+<p>我们对上面的代码进行解析，<code>函数名`...`</code>，实质上是一种不需要( … )的特殊函数调用。<code>标签</code> —— 在字符串字面量<code>..</code> 之前的<code>函数名</code>（func、foo）部分 —— 是一个应当被调用的函数的值。实际上，它可以是返回函数的任何表达式，甚至是一个返回另一个函数的函数调用，就像：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">bar</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">foo</span>(<span class="hljs-params">strings, ...values</span>) &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>( strings );<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>( values );<br>    &#125;<br>&#125;<br><span class="hljs-keyword">var</span> desc = <span class="hljs-string">&quot;awesome&quot;</span>;<br><span class="hljs-title function_">bar</span>()<span class="hljs-string">`Everything is <span class="hljs-subst">$&#123;desc&#125;</span>!`</span>;<br><span class="hljs-comment">// [ &quot;Everything is &quot;, &quot;!&quot;]</span><br><span class="hljs-comment">// [ &quot;awesome&quot; ]</span><br></code></pre></td></tr></table></figure>
+<p>但当作为一个字符串字面量的标签时，函数foo(…)被传入了什么？<br>
+第一个参数值 —— 我们称它为strings —— 是一个所有普通字符串的数组（所有被插值的表达式<code>$&#123;..&#125;</code>之间的东西）。我们在strings数组中得到两个值：“Everything is “和”!”。</p>
+<p>strings后面的参数可以单独命名,但我们通常使用<code>...收集/剩余操作符</code>将所有后续的参数值收集到一个称为values的数组中。</p>
+<p>被收集进values数组中的参数值，就是在字符串字面量中已经被求过值的<code>$&#123;..&#125;</code>插值表达式的结果。</p>
+<p>一个标签型字符串字面量像是一个在插值表达式被求值之后，但是在最终的字符串被编译之前的处理步骤，允许你在从字面量中产生字符串的过程中进行更多的控制。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">tag</span>(<span class="hljs-params">strings, ...values</span>) &#123;<br>    <span class="hljs-keyword">return</span> strings.<span class="hljs-title function_">reduce</span>( <span class="hljs-keyword">function</span>(<span class="hljs-params">s,v,idx</span>)&#123;<br>        <span class="hljs-keyword">return</span> s + (idx &gt; <span class="hljs-number">0</span> ? values[idx-<span class="hljs-number">1</span>] : <span class="hljs-string">&quot;&quot;</span>) + v;<br>    &#125;, <span class="hljs-string">&quot;&quot;</span> );<br>&#125;<br><br><span class="hljs-keyword">var</span> desc = <span class="hljs-string">&quot;awesome&quot;</span>;<br><span class="hljs-keyword">var</span> text = tag<span class="hljs-string">`Everything is <span class="hljs-subst">$&#123;desc&#125;</span>!`</span>;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>( text ); <span class="hljs-comment">//  Everything is awesome!</span><br><span class="hljs-comment">//过程解析</span><br><span class="hljs-comment">//strings = [&#x27;Everything is &#x27;, &#x27;!&#x27;, raw]</span><br><span class="hljs-comment">//0: &quot;Everything is &quot;</span><br><span class="hljs-comment">//1: &quot;!&quot;</span><br><span class="hljs-comment">//values = [&#x27;awesome&#x27;]</span><br>| callback    | s             | v             | idx | <span class="hljs-keyword">return</span> value           |<br>| ----------- | ------------- | ------------- | --- | ---------------------- |<br>| first call  | <span class="hljs-string">&quot;&quot;</span>(默认值)    | <span class="hljs-title class_">Everything</span> is | <span class="hljs-number">0</span>   | <span class="hljs-title class_">Everything</span> is          |<br>| second call | <span class="hljs-title class_">Everything</span> is | <span class="hljs-string">&#x27;! &#x27;</span>          | <span class="hljs-number">1</span>   | <span class="hljs-title class_">Everything</span> is awesome! |<br></code></pre></td></tr></table></figure>
+<p>在这个代码段中，<code>tag(..)</code>是一个直通操作，因为它不实施任何特殊的修改，而只是使用<code>reduce(..)</code>来循环遍历，并像一个未打标签的字符串字面量一样，将strings和values拼接/穿插在一起。</p>
+<p>那么实际的用法是什么？有许多高级的用法超出了我们要在这里讨论的范围。但这里有一个格式化美元数字的简单想法（有些像基本的本地化）：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">dollabillsyall</span>(<span class="hljs-params">strings, ...values</span>) &#123;<br>    <span class="hljs-keyword">return</span> strings.<span class="hljs-title function_">reduce</span>( <span class="hljs-keyword">function</span>(<span class="hljs-params">s,v,idx</span>)&#123;<br>        <span class="hljs-keyword">if</span> (idx &gt; <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> values[idx-<span class="hljs-number">1</span>] == <span class="hljs-string">&quot;number&quot;</span>) &#123;<br>                s += <span class="hljs-string">`$<span class="hljs-subst">$&#123;values[idx-<span class="hljs-number">1</span>].toFixed( <span class="hljs-number">2</span> )&#125;</span>`</span>;<br>            &#125;<br>            <span class="hljs-keyword">else</span> &#123;<br>                s += values[idx-<span class="hljs-number">1</span>];<br>            &#125;<br>        &#125;<br><br>        <span class="hljs-keyword">return</span> s + v;<br>    &#125;, <span class="hljs-string">&quot;&quot;</span> );<br>&#125;<br><br><span class="hljs-keyword">var</span> amt1 = <span class="hljs-number">11.99</span>,<br>    amt2 = amt1 * <span class="hljs-number">1.08</span>,<br>    name = <span class="hljs-string">&quot;Kyle&quot;</span>;<br><br><span class="hljs-keyword">var</span> text = dollabillsyall<br><span class="hljs-string">`Thanks for your purchase, <span class="hljs-subst">$&#123;name&#125;</span>! Your</span><br><span class="hljs-string">product cost was <span class="hljs-subst">$&#123;amt1&#125;</span>, which with tax</span><br><span class="hljs-string">comes out to <span class="hljs-subst">$&#123;amt2&#125;</span>.`</span><br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>( text );<br><span class="hljs-comment">// Thanks for your purchase, Kyle! Your</span><br><span class="hljs-comment">// product cost was $11.99, which with tax</span><br><span class="hljs-comment">// comes out to $12.95.</span><br><br><span class="hljs-comment">//过程解析</span><br><span class="hljs-comment">//strings = [&#x27;Thanks for your purchase, &#x27;,</span><br><span class="hljs-comment">// &#x27;! Your\nproduct cost was &#x27;, &#x27;, which with tax\ncomes out to &#x27;, &#x27;.&#x27;, raw]</span><br><span class="hljs-comment">//0: &quot;Thanks for your purchase, &quot;</span><br><span class="hljs-comment">//1: &quot;! Your\nproduct cost was &quot;</span><br><span class="hljs-comment">//2: &quot;, which with tax\ncomes out to &quot;</span><br><span class="hljs-comment">//3: &quot;.&quot;</span><br><span class="hljs-comment">//values = [&#x27;Kyle&#x27;, 11.99, 12.949200000000001]</span><br></code></pre></td></tr></table></figure>
+<p>如果在values数组中遇到一个number值，我们就在它前面放一个&quot;$&quot;并用toFixed(2)将它格式化为小数点后两位有效。否则，我们就不碰这个值而让它直通过去。</p>
+<p><big><strong>raw属性</strong></big><br>
+这里重点提一下raw属性，它也是一个数组，包含了strings数组中的元素所对应的原始信息，相当于为每个元素调用了一次String对象的raw()方法。注意，String.raw()是一个内置的标签模板，在调用时要用特殊的形式。</p>
+<p>下面用一个例子来演示String.raw()的功能，先定义一个包含水平制表符（\t）的字符串，然后在第一次输出的时候，“<p>”和“&lt;\p&gt;”之间会有空格隔开，接着调用String.raw()，再次输出时就能把“\t”也一并显示。其实要在控制台显示第二条注释需要在“\t”前加一条反斜线（即“\t”）做转义，这样才能把“\t”分成两个独立的字符：“\”和“t”，不再有水平制表符的效果。但此处为了便于理解，省略了反斜线。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> html = <span class="hljs-string">`&lt;p&gt;\t&lt;/p&gt;`</span>;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(html);        <span class="hljs-comment">//&quot;&lt;p&gt;     &lt;/p&gt;&quot;</span><br>html = <span class="hljs-title class_">String</span>.<span class="hljs-property">raw</span><span class="hljs-string">`&lt;p&gt;\t&lt;/p&gt;`</span>;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(html);        <span class="hljs-comment">//&quot;&lt;p&gt;\t&lt;/p&gt;&quot;</span><br></code></pre></td></tr></table></figure>
+<h3 id="3-9-模式匹配">3.9 模式匹配</h3>
+<p>JavaScript定义了一种被称为<code>正则表达式（或RegExp）</code>的数据类型，用于描述和匹配文本中的字符串模式。RegExp不是JavaScript中的基础类型，但具有类似数值和字符串的字面量语法，因此它们有时候看起来像是基础类型。正则表达式字面量的语法很复杂，它们定义的API也没那么简单。由于RegExp很强大，且常用于文本处理，因此这里先简单地介绍一下。</p>
+<p>一对斜杠之间的文本构成正则表达式字面量。这对斜杠中的第二个后面也可以跟一个或多个字母，用于修改模式的含义。例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs RegExp">/^HTML/ <br>匹配字符串开头的字母HTML<br><br>/[1-9][0-9]*/<br>匹配非0数字，后面跟着任意数字<br><br>/\bjavascript\b/i<br>匹配&quot;javascript&quot;这个词，不区分大小写<br><br></code></pre></td></tr></table></figure>
+<p>RegExp对象定义了一些有用的方法，而字符串也有接收RegExp参数的方法。例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> text = <span class="hljs-string">&#x27;testing:1,2,3&#x27;</span>;<br><span class="hljs-keyword">let</span> patten = <span class="hljs-regexp">/\d+/g</span>;<span class="hljs-comment">//匹配一个或多个数字</span><br>patten.<span class="hljs-title function_">test</span>(text); <span class="hljs-comment">//true,存在匹配项</span><br>text.<span class="hljs-title function_">search</span>(patten);<span class="hljs-comment">//8,第一个匹配的位置</span><br>text.<span class="hljs-title function_">match</span>(patten);<span class="hljs-comment">//[&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;]</span><br>text.<span class="hljs-title function_">replace</span>(patten,<span class="hljs-string">&#x27;*&#x27;</span>);<span class="hljs-comment">//&#x27;testing:*,*,*&#x27;</span><br>text.<span class="hljs-title function_">split</span>(<span class="hljs-regexp">/\D+/</span>);<span class="hljs-comment">//[&#x27;&#x27;, &#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;],基于非数字拆分</span><br></code></pre></td></tr></table></figure>
+<h2 id="4-布尔值-Boolean">4. 布尔值 Boolean</h2>
+<p>布尔值表示真或假、开或关、是或否。这个类型只有两个值：true和false。<br>
+布尔值在JavaScript中通常是比较操作的结果。例如：<br>
+<code>a===4</code><br>
+以上代码测试变量a的值是否等于数值4。如果是，则返回true；否则返回false。</p>
+<p>布尔值在JavaScript常用于控制结构。例如，JavaScript中的if/else语句在布尔值为true时会执行一种操作，而在值为false时会执行另一种操作。我们经常把产生布尔值的比较表达式直接放在使用布尔值的语句中。结果类似如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">if</span>(a===<span class="hljs-number">4</span>)&#123;<br>  b=b+<span class="hljs-number">1</span>;<br>&#125;<span class="hljs-keyword">else</span>&#123;<br>  a=a+<span class="hljs-number">1</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>以上代码检查a是否等于4，如果等于，则给b加1；否则，给a加1。</p>
+<p>JavaScript的任何值都可以转换为布尔值。下面的这些值都会转换为（因而可以被用作）布尔值false：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-literal">undefined</span><br><span class="hljs-literal">null</span><br><span class="hljs-number">0</span><br>-<span class="hljs-number">0</span><br><span class="hljs-title class_">NaN</span><br><span class="hljs-string">&#x27;&#x27;</span><span class="hljs-comment">//空字符串</span><br></code></pre></td></tr></table></figure>
+<p>所有其他值，包括所有对象（和数组）都转换为（可以被用作）布尔值true。false和可以转换为它的6个值有时候也被称为假性值（falsy），而所有其他值则被称为真性值（truthy）。在任何JavaScript期待布尔值的时候，假性值都可以当作false，而真性值都可以当作true。</p>
+<p>例如，假设变量o要么保存一个对象，要么是值null。可以通过一个if语句像下面这样检测o是否为非空：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">if</span>(o!==<span class="hljs-literal">null</span>)...<br></code></pre></td></tr></table></figure>
+<p>使用不全等操作符!==比较o和null，求值结果要么是true要么是false。不过，也可以省略比较，直接依赖null是假性值而对象是真性值这个事实：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">if</span>(o)...<br></code></pre></td></tr></table></figure>
+<p>第一种情况下，if语句的主体只有在o不是null时才会被执行。第二种情况没那么严格，只要o不是false或任何其他假性值（如null或undefined），if语句的主体就会执行。哪种if语句适合你的程序取决于你期待o中保存什么值。如果需要区分null和0、“”，那么就应该使用比较表达式。</p>
+<p>布尔值有一个toString()方法，可用于将自己转换为字符串&quot;true&quot;或&quot;false&quot;。除此之外，布尔值再没有其他有用的方法了。除了这个极其简单的API，还有三种重要的布尔值操作符。</p>
+<ul>
+<li><code>&amp;&amp;</code>操作符执行布尔<code>与</code>操作，当且仅当两个操作数都为真时，求值结果才是真；任何一个操作数为假，结果都为假。</li>
+<li><code>||</code>操作符执行布尔<code>或</code>操作，任何一个操作数为真，求值结果就是真；只有当两个操作数均为假时，结果才是假。</li>
+<li>一元的<code>！</code>操作符执行布尔<code>非</code>操作，如果操作数是假则结果为true；如果操作数是真则结果为false。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">if</span>((x===<span class="hljs-number">0</span> &amp;&amp; y===<span class="hljs-number">0</span>) || !(z===<span class="hljs-number">0</span>))&#123;<br>  <span class="hljs-comment">//x与y均为0，或者z不等于0</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="5-null和undefined">5. null和undefined</h2>
 <h2 id="注释："><em><strong>注释：</strong></em></h2>
 <section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://blog.silentblue.top/2022/06/10/%E6%B5%85%E8%B0%88IEEE754%E6%A0%87%E5%87%86%E7%9A%84%E6%B5%AE%E7%82%B9%E6%95%B0%E8%AF%AF%E5%B7%AE%E6%88%90%E5%9B%A0/">https://blog.silentblue.top/2022/06/10/浅谈IEEE754标准的浮点数误差成因/</a>
 <a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span>Math内置对象 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math</a>
 <a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:3" class="footnote-text"><span>IIFE <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Glossary/IIFE">https://developer.mozilla.org/zh-CN/docs/Glossary/IIFE</a>
-<a href="#fnref:3" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
+<a href="#fnref:3" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:4" class="footnote-text"><span>toFixed()、.reduce() <a target="_blank" rel="noopener" href="http://www.baidu.com">http://www.baidu.com</a>
+<a href="#fnref:4" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
               
             </div>
             <hr/>
@@ -1114,7 +1170,7 @@ NFKD，表示“兼容等价分解”（Normalization Form Compatibility Decompo
   <div class="license-box my-3">
     <div class="license-title">
       <div>JavaScript的数据类型浅析</div>
-      <div>http://example.com/2022/06/16/JavaScript的数据类型浅析/</div>
+      <div>http://example.com/2022/06/19/JavaScript的数据类型浅析/</div>
     </div>
     <div class="license-meta">
       
@@ -1126,7 +1182,7 @@ NFKD，表示“兼容等价分解”（Normalization Form Compatibility Decompo
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年6月16日</div>
+          <div>2022年6月19日</div>
         </div>
       
       
