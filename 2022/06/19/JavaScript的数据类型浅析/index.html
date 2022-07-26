@@ -234,7 +234,7 @@
         
         
         
-          384 分钟
+          385 分钟
         
       </span>
     
@@ -1092,7 +1092,7 @@ NFKD，表示“兼容等价分解”（Normalization Form Compatibility Decompo
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> sym = <span class="hljs-title class_">Symbol</span>(<span class="hljs-string">&quot;age&quot;</span>);<br><span class="hljs-title class_">Number</span>(sym); <span class="hljs-comment">//Uncaught TypeError</span><br><span class="hljs-built_in">parseInt</span>(sym); <span class="hljs-comment">//Uncaught TypeError</span><br><span class="hljs-number">1</span> + sym; <span class="hljs-comment">//Uncaught TypeError</span><br><span class="hljs-string">&quot;&quot;</span> + sym; <span class="hljs-comment">//Uncaught TypeError</span><br><span class="hljs-title class_">Boolean</span>(sym); <span class="hljs-comment">//true</span><br>!sym; <span class="hljs-comment">//false</span><br>sym.<span class="hljs-title function_">toString</span>(); <span class="hljs-comment">// &#x27;Symbol(age)&#x27;</span><br><span class="hljs-title class_">String</span>(sym); <span class="hljs-comment">// &#x27;Symbol(age)&#x27;</span><br></code></pre></td></tr></table></figure>
 <p><big><strong>全局共享</strong></big></p>
 <p>ES6会在内部维护一张全局符号注册表，通过<code>Symbol.for()</code>方法，可以登记指定符号，使其变成一个全局有效地符号，从而达到全局共享。该方法只接收一个参数，这个参数既是注册表中的键值，同时也是此符号的描述。下面的代码调用了两次Symbol.for()方法，传递了相同的参数，返回的却是同一个全局符号。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><br><br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> sym = <span class="hljs-title class_">Symbol</span>.<span class="hljs-title function_">for</span>(<span class="hljs-string">&#x27;name&#x27;</span>);<br>    sym1 = <span class="hljs-title class_">Symbol</span>.<span class="hljs-title function_">for</span>(<span class="hljs-string">&#x27;name&#x27;</span>);<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(sym === sym1);<br></code></pre></td></tr></table></figure>
 <h2 id="注释："><em><strong>注释：</strong></em></h2>
 <section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://blog.silentblue.top/2022/06/10/%E6%B5%85%E8%B0%88IEEE754%E6%A0%87%E5%87%86%E7%9A%84%E6%B5%AE%E7%82%B9%E6%95%B0%E8%AF%AF%E5%B7%AE%E6%88%90%E5%9B%A0/">https://blog.silentblue.top/2022/06/10/浅谈IEEE754标准的浮点数误差成因/</a>
 <a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span>Math内置对象 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math</a>
