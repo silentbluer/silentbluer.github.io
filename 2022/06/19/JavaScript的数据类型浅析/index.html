@@ -223,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          45k 字
+          46k 字
         
       </span>
     
@@ -234,7 +234,7 @@
         
         
         
-          375 分钟
+          384 分钟
         
       </span>
     
@@ -1081,6 +1081,18 @@ NFKD，表示“兼容等价分解”（Normalization Form Compatibility Decompo
 <p>抛开细微的差别，null和undefined都可以表示某个值不存在，经常被混用。相等操作符==认为它们相等（要区分它们，必须使用全等操作符===）。因为它们俩都是假性值，在需要布尔值的情况下，它们都可以当作false使用。null和undefined都没有属性或方法。事实上，使用<code>.</code>或<code>[]</code>访问这两个值的属性或方法会导致TypeError。</p>
 <p>我认为可以用undefined表示一种系统级别、意料之外或类似错误的没有值，可以用null表示程序级别、正常或意料之中的没有值。实际编码中，我会尽量避免使用null和undefined，如果需要给某个变量或属性赋这样一个值，或者需要向函数传入或从函数中返回这样一个值，我通常使用null。有些程序员则极力避免使用null，而倾向于使用undefined。</p>
 <h2 id="6-符号-Symbol">6. 符号 Symbol</h2>
+<p>符号（Symbol）是ES6新增的一种原始类型，用作非字符串的属性名。ES5 的对象属性名都是字符串，每个属性都有一个名字和一个值，这容易造成属性名的冲突。比如，你使用了一个他人提供的对象，但又想为这个对象添加新的方法（mixin 模式），新方法的名字就有可能与现有方法产生冲突。但在ES6和之后的版本中，符号也可以作为属性名，保证每个属性的名字都是独一无二的，这样就从根本上防止属性名的冲突。这就是 ES6 引入Symbol的原因。</p>
+<p><big><strong>创建</strong></big></p>
+<p>符号没有字面量形式，只能通过Symbol()函数创建。该函数有一个可选的参数，只是用来描述当前符号，除了便于阅读之外，没有其他用途。由此可知，即使两个符号的描述相同，它们还是不能画等号。注意，Symbol()不是构造函数，因此不能和new运算符组合使用，否则会抛出类型错误。下面用一个例子展示符号的创建。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> sym1 = <span class="hljs-title class_">Symbol</span>(),<br>    sym2 = <span class="hljs-title class_">Symbol</span>(<span class="hljs-string">&quot;name&quot;</span>),<br>    sym3 = <span class="hljs-title class_">Symbol</span>(<span class="hljs-string">&quot;name&quot;</span>),<br>    sym4 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Symbol</span>(); <span class="hljs-comment">//抛出类型错误, Uncaught TypeError: Symbol is not a constructor</span><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(sym2 === sym3);<span class="hljs-comment">//false</span><br></code></pre></td></tr></table></figure>
+<p>如果要识别一个变量是否为符号，可以用typeof运算符。ES6扩展了它，当检测到符号时，能返回一个新的类型字符串“symbol”，如下所示。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">typeof</span> sym1; <span class="hljs-comment">//symbol</span><br><span class="hljs-keyword">typeof</span> sym2; <span class="hljs-comment">//symbol</span><br></code></pre></td></tr></table></figure>
+<p><big><strong>类型转换</strong></big></p>
+<p>符号在类型转换时表现得并不灵活，它无法与数字或字符串进行运算，也无法显式的转换成数字。不过，符号可以显式的转换成字符串或布尔值。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> sym = <span class="hljs-title class_">Symbol</span>(<span class="hljs-string">&quot;age&quot;</span>);<br><span class="hljs-title class_">Number</span>(sym); <span class="hljs-comment">//Uncaught TypeError</span><br><span class="hljs-built_in">parseInt</span>(sym); <span class="hljs-comment">//Uncaught TypeError</span><br><span class="hljs-number">1</span> + sym; <span class="hljs-comment">//Uncaught TypeError</span><br><span class="hljs-string">&quot;&quot;</span> + sym; <span class="hljs-comment">//Uncaught TypeError</span><br><span class="hljs-title class_">Boolean</span>(sym); <span class="hljs-comment">//true</span><br>!sym; <span class="hljs-comment">//false</span><br>sym.<span class="hljs-title function_">toString</span>(); <span class="hljs-comment">// &#x27;Symbol(age)&#x27;</span><br><span class="hljs-title class_">String</span>(sym); <span class="hljs-comment">// &#x27;Symbol(age)&#x27;</span><br></code></pre></td></tr></table></figure>
+<p><big><strong>全局共享</strong></big></p>
+<p>ES6会在内部维护一张全局符号注册表，通过<code>Symbol.for()</code>方法，可以登记指定符号，使其变成一个全局有效地符号，从而达到全局共享。该方法只接收一个参数，这个参数既是注册表中的键值，同时也是此符号的描述。下面的代码调用了两次Symbol.for()方法，传递了相同的参数，返回的却是同一个全局符号。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><br><br></code></pre></td></tr></table></figure>
 <h2 id="注释："><em><strong>注释：</strong></em></h2>
 <section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://blog.silentblue.top/2022/06/10/%E6%B5%85%E8%B0%88IEEE754%E6%A0%87%E5%87%86%E7%9A%84%E6%B5%AE%E7%82%B9%E6%95%B0%E8%AF%AF%E5%B7%AE%E6%88%90%E5%9B%A0/">https://blog.silentblue.top/2022/06/10/浅谈IEEE754标准的浮点数误差成因/</a>
 <a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span>Math内置对象 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math</a>
