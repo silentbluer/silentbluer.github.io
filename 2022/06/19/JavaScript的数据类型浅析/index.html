@@ -223,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          55k 字
+          56k 字
         
       </span>
     
@@ -234,7 +234,7 @@
         
         
         
-          459 分钟
+          463 分钟
         
       </span>
     
@@ -1197,6 +1197,9 @@ ES6会在内部维护一张全局符号注册表，通过<code>Symbol.for()</cod
 <p>类似数组的对象正好相反，默认不展开。它的<code>Symbol.isConcatSpreadable</code>属性设为<code>true</code>，才可以展开。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> obj = &#123;<span class="hljs-attr">length</span>:<span class="hljs-number">2</span>,<span class="hljs-number">0</span>:<span class="hljs-string">&#x27;c&#x27;</span>,<span class="hljs-number">1</span>:<span class="hljs-string">&#x27;d&#x27;</span>&#125;;<br>[<span class="hljs-string">&#x27;a&#x27;</span>,<span class="hljs-string">&#x27;b&#x27;</span>].<span class="hljs-title function_">concat</span>(obj,<span class="hljs-string">&#x27;e&#x27;</span>);<span class="hljs-comment">//[&#x27;a&#x27;, &#x27;b&#x27;, &#123;…&#125;, &#x27;e&#x27;]</span><br><br>obj[<span class="hljs-title class_">Symbol</span>.<span class="hljs-property">isConcatSpreadbale</span>] = <span class="hljs-literal">true</span>;<br>[<span class="hljs-string">&#x27;a&#x27;</span>,<span class="hljs-string">&#x27;b&#x27;</span>].<span class="hljs-title function_">concat</span>(obj,<span class="hljs-string">&#x27;e&#x27;</span>);<span class="hljs-comment">// [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;, &#x27;e&#x27;]</span><br></code></pre></td></tr></table></figure>
 <p><code>Symbol.isConcatSpreadable</code>属性也可以定义在类里面。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">class</span> <span class="hljs-title class_">A1</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">Array</span>&#123;<br>  <span class="hljs-title function_">constructor</span>(<span class="hljs-params">args</span>)&#123;<br>    <span class="hljs-variable language_">super</span>(args);<br>    <span class="hljs-variable language_">this</span>[<span class="hljs-title class_">Symbol</span>.<span class="hljs-property">isConcatSpreadable</span>] = <span class="hljs-literal">true</span>;<br>  &#125;<br>&#125;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">A2</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">Array</span>&#123;<br>  <span class="hljs-title function_">constructor</span>(<span class="hljs-params">args</span>)&#123;<br>    <span class="hljs-variable language_">super</span>(args);<br>  &#125;<br>  get [<span class="hljs-title class_">Symbol</span>.<span class="hljs-property">isConcatSpreadable</span>]()&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">let</span> a1 = <span class="hljs-keyword">new</span> <span class="hljs-title function_">A1</span>();<br>a1[<span class="hljs-number">0</span>] = <span class="hljs-number">3</span>;<br>a1[<span class="hljs-number">1</span>] = <span class="hljs-number">4</span>;<br><span class="hljs-keyword">let</span> a2 = <span class="hljs-keyword">new</span> <span class="hljs-title function_">A2</span>();<br>a2[<span class="hljs-number">0</span>] = <span class="hljs-number">5</span>;<br>a2[<span class="hljs-number">1</span>] = <span class="hljs-number">6</span>;<br><br>[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>].<span class="hljs-title function_">concat</span>(a1).<span class="hljs-title function_">concat</span>(a2);<span class="hljs-comment">//[1, 2, 3, 4, A2(2)]</span><br></code></pre></td></tr></table></figure>
+<p>上面代码中，类A1是可展开的，类A2是不可展开的，所以使用concat时有不一样的结果。</p>
+<p>注意，<code>Symbol.isConcatSpreadable</code>的位置差异，A1是定义在实例上，A2是定义在类本身，效果相同。</p>
 <hr>
 <h2 id="注释："><em><strong>注释：</strong></em></h2>
 <section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://blog.silentblue.top/2022/06/10/%E6%B5%85%E8%B0%88IEEE754%E6%A0%87%E5%87%86%E7%9A%84%E6%B5%AE%E7%82%B9%E6%95%B0%E8%AF%AF%E5%B7%AE%E6%88%90%E5%9B%A0/">https://blog.silentblue.top/2022/06/10/浅谈IEEE754标准的浮点数误差成因/</a>
