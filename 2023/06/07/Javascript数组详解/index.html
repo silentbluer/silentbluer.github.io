@@ -16,12 +16,12 @@
   <meta name="author" content="silentblue">
   <meta name="keywords" content="">
   
-    <meta name="description" content="操作方法">
+    <meta name="description" content="数组简介 有时候我们在对数据进行存储的时候需要将数据进行有序的管理，但是对象无法提供管理有序存储数据的方法，因此，我们就要用到一种特殊的数据结构数组，数组能够存储有序的集合。 声明 创建数组有两种方式，一是创建空数组，然后给数组赋值，二是直接创建带数据的数组。 创建空数组 123let arr &#x3D; new Array();let arr &#x3D; [];arr &#x3D; [&quot;Apple&quot;,">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Javascript数组详解">
 <meta property="og:url" content="http://example.com/2023/06/07/Javascript%E6%95%B0%E7%BB%84%E8%AF%A6%E8%A7%A3/index.html">
 <meta property="og:site_name" content="无稚青年睡草堂">
-<meta property="og:description" content="操作方法">
+<meta property="og:description" content="数组简介 有时候我们在对数据进行存储的时候需要将数据进行有序的管理，但是对象无法提供管理有序存储数据的方法，因此，我们就要用到一种特殊的数据结构数组，数组能够存储有序的集合。 声明 创建数组有两种方式，一是创建空数组，然后给数组赋值，二是直接创建带数据的数组。 创建空数组 123let arr &#x3D; new Array();let arr &#x3D; [];arr &#x3D; [&quot;Apple&quot;,">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2023/06/07/Javascript%E6%95%B0%E7%BB%84%E8%AF%A6%E8%A7%A3/Javascript%E6%95%B0%E7%BB%84%E8%AF%A6%E8%A7%A3/array.png">
 <meta property="article:published_time" content="2023-06-07T02:17:33.000Z">
@@ -209,7 +209,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4 字
+          926 字
         
       </span>
     
@@ -220,7 +220,7 @@
         
         
         
-          1 分钟
+          8 分钟
         
       </span>
     
@@ -270,8 +270,30 @@
             
             <div class="markdown-body">
               
-              <p><img src="./Javascript%E6%95%B0%E7%BB%84%E8%AF%A6%E8%A7%A3/array.png" srcset="/img/loading.gif" lazyload alt="数组常见方法" title="数组常见方法"></p>
+              <h3 id="数组简介">数组简介</h3>
+<p>有时候我们在对数据进行存储的时候需要将数据进行有序的管理，但是对象无法提供管理有序存储数据的方法，因此，我们就要用到一种特殊的数据结构数组，数组能够存储有序的集合。</p>
+<h4 id="声明">声明</h4>
+<p>创建数组有两种方式，一是创建空数组，然后给数组赋值，二是直接创建带数据的数组。</p>
+<h5 id="创建空数组">创建空数组</h5>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> arr = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Array</span>();<br><span class="hljs-keyword">let</span> arr = [];<br>arr = [<span class="hljs-string">&quot;Apple&quot;</span>, <span class="hljs-string">&quot;Orange&quot;</span>, <span class="hljs-string">&quot;Plum&quot;</span>];<br></code></pre></td></tr></table></figure>
+<h5 id="创建带数据的数组">创建带数据的数组</h5>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> arr = [<span class="hljs-string">&quot;Apple&quot;</span>, <span class="hljs-string">&quot;Orange&quot;</span>, <span class="hljs-string">&quot;Plum&quot;</span>];<br></code></pre></td></tr></table></figure>
+<h5 id="数组特性">数组特性</h5>
+<p>数组元素编号从<code>0</code>开始，我们可以通过<code>ArrayName[num]</code>方括号中的数字对数组元素进行操作:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> arr = [<span class="hljs-string">&quot;Apple&quot;</span>, <span class="hljs-string">&quot;Orange&quot;</span>, <span class="hljs-string">&quot;Plum&quot;</span>];<br><span class="hljs-comment">//获取数组元素，</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr[<span class="hljs-number">0</span>]);<span class="hljs-comment">//&quot;Apple&quot;</span><br><span class="hljs-comment">//替换数组元素</span><br>arr[<span class="hljs-number">2</span>]=<span class="hljs-string">&#x27;Banana&#x27;</span>;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr);<span class="hljs-comment">//&quot;Apple&quot;, &quot;Orange&quot;, &quot;Banana&quot;</span><br><span class="hljs-comment">//追加数组元素</span><br>arr[<span class="hljs-number">3</span>]=<span class="hljs-string">&#x27;Lemon&#x27;</span>;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr);<span class="hljs-comment">//&quot;Apple&quot;, &quot;Orange&quot;, &quot;Banana&quot;, &quot;Lemon&quot;</span><br></code></pre></td></tr></table></figure>
+<p><code>length</code>属性的值是数组中元素的总个数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> arr = [<span class="hljs-string">&quot;Apple&quot;</span>, <span class="hljs-string">&quot;Orange&quot;</span>, <span class="hljs-string">&quot;Plum&quot;</span>];<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr.<span class="hljs-property">length</span>);<span class="hljs-comment">//3</span><br></code></pre></td></tr></table></figure>
+<p><img src="./Javascript%E6%95%B0%E7%BB%84%E8%AF%A6%E8%A7%A3/array.png" srcset="/img/loading.gif" lazyload alt="数组常见方法" title="数组常见方法"></p>
 <h3 id="操作方法">操作方法</h3>
+<p>对数组的操作可以归纳为增、删、改、查，需要注意的是哪些操作会改变原数组，哪些不会。</p>
+<h4 id="增">增</h4>
+<p>以下为四组对数组进行增的操作方法，其中<code>concat()</code>不会对原数组产生影响</p>
+<ul>
+<li>push()</li>
+<li>unshift()</li>
+<li>splice()</li>
+<li>concat()</li>
+</ul>
 
               
             </div>
@@ -335,8 +357,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/05/14/hello-world/" title="Hello World">
-                        <span class="hidden-mobile">Hello World</span>
+                      <a href="/2022/06/19/JavaScript%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%B5%85%E6%9E%90/" title="JavaScript的数据类型浅析">
+                        <span class="hidden-mobile">JavaScript的数据类型浅析</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
