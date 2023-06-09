@@ -11,11 +11,11 @@
   <link rel="icon" href="/img/fluid.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-
+  
   <meta name="theme-color" content="#2f4154">
   <meta name="author" content="silentblue">
   <meta name="keywords" content="">
-
+  
     <meta name="description" content="数组是 js 中最常用到的数据集合，其内置的方法有很多，熟练掌握这些方法，可以有效的提高我们的工作效率，同时对我们的代码质量也是有很大影响。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript的数据类型浅析">
@@ -33,9 +33,9 @@
 <meta property="article:tag" content="数组">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/2023/06/07/Javascript%E6%95%B0%E7%BB%84%E8%AF%A6%E8%A7%A3/Javascript%E6%95%B0%E7%BB%84%E8%AF%A6%E8%A7%A3/array.png">
-
-
-
+  
+  
+  
   <title>JavaScript的数据类型浅析 - 无稚青年睡草堂</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
@@ -64,13 +64,13 @@
 
 
   <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
-
+  
     <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
 
 
 
-
-
+  
 <link rel="stylesheet" href="/css/custom.css">
 
 
@@ -88,15 +88,15 @@
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
 
-
+  
 <meta name="generator" content="Hexo 6.2.0"></head>
 
 
 <body>
-
+  
 
   <header>
-
+    
 
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
@@ -114,75 +114,75 @@
     <!-- Collapsible content -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto text-center">
-
-
-
-
-
+        
+          
+          
+          
+          
             <li class="nav-item">
               <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
             </li>
-
-
-
-
-
-
+          
+        
+          
+          
+          
+          
             <li class="nav-item">
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
               </a>
             </li>
-
-
-
-
-
-
+          
+        
+          
+          
+          
+          
             <li class="nav-item">
               <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
             </li>
-
-
-
-
-
-
+          
+        
+          
+          
+          
+          
             <li class="nav-item">
               <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
             </li>
-
-
-
+          
+        
+        
           <li class="nav-item" id="search-btn">
             <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
               &nbsp;<i class="iconfont icon-search"></i>&nbsp;
             </a>
           </li>
-
-
-
+          
+        
+        
           <li class="nav-item" id="color-toggle-btn">
             <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
                 class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
-
+        
       </ul>
     </div>
   </div>
 </nav>
 
-
+  
 
 <div id="banner" class="banner" parallax=true
      style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
@@ -190,63 +190,63 @@
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
-
+          
             <span id="subtitle" data-typed-text="JavaScript的数据类型浅析"></span>
-
+          
         </div>
 
-
-
+        
+          
   <div class="mt-3">
-
-
+    
+    
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
         <time datetime="2023-06-07 10:17" pubdate>
           2023年6月7日
         </time>
       </span>
-
+    
   </div>
 
   <div class="mt-1">
-
+    
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
-
-          11k 字
-
+        
+          20k 字
+        
       </span>
+    
 
-
-
+    
       <span class="post-meta mr-2">
         <i class="iconfont icon-clock-fill"></i>
-
-
-
-          92 分钟
-
+        
+        
+        
+          169 分钟
+        
       </span>
+    
 
-
-
-
-
+    
+    
+      
         <span id="leancloud-page-views-container" class="post-meta" style="display: none">
           <i class="iconfont icon-eye" aria-hidden="true"></i>
           <span id="leancloud-page-views"></span> 次
         </span>
-
-
-
+        
+      
+    
   </div>
 
 
-
+        
       </div>
 
-
+      
     </div>
   </div>
 </div>
@@ -256,13 +256,13 @@
   </header>
 
   <main>
-
-
+    
+      
 
 <div class="container-fluid nopadding-x">
   <div class="row nomargin-x">
     <div class="side-col d-none d-lg-block col-lg-2">
-
+      
 
     </div>
 
@@ -272,9 +272,9 @@
           <article class="post-content mx-auto">
             <!-- SEO header -->
             <h1 style="display: none">JavaScript的数据类型浅析</h1>
-
+            
             <div class="markdown-body">
-
+              
               <h3 id="数组简介">数组简介</h3>
 <p>有时候我们在对数据进行存储的时候需要将数据进行有序的管理，但是对象无法提供管理有序存储数据的方法，因此，我们就要用到一种特殊的数据结构数组，数组能够存储有序的集合。</p>
 <h4 id="创建数组">创建数组</h4>
@@ -326,7 +326,7 @@
 <p><code>shift</code> 取出队列首端的一个元素，整个队列往前移，这样原先排第二的元素现在排在了第一。</p>
 </li>
 </ul>
-<p><img src="./Javascript%E6%95%B0%E7%BB%84%E8%AF%A6%E8%A7%A3/queue.svg" srcset="/img/loading.gif" lazyload alt="queue"></p>
+<p><img src="https://zh.javascript.info/article/array/queue.svg" srcset="/img/loading.gif" lazyload alt="queue"></p>
 <p>这两种操作数组都支持。</p>
 <p>队列的应用在实践中经常会碰到。例如需要在屏幕上显示消息队列。</p>
 <h4 id="数据结构栈-stack"><code>数据结构栈(stack)</code></h4>
@@ -337,7 +337,7 @@
 </ul>
 <p>所以新元素的添加和取出都是从“末端”开始的。</p>
 <p>栈通常被被形容成一叠卡片：要么在最上面添加卡片，要么从最上面拿走卡片：</p>
-<p><img src="./Javascript%E6%95%B0%E7%BB%84%E8%AF%A6%E8%A7%A3/stack.svg" srcset="/img/loading.gif" lazyload alt="stack"></p>
+<p><img src="https://zh.javascript.info/article/array/stack.svg" srcset="/img/loading.gif" lazyload alt="stack"></p>
 <p>对于栈来说，最后放进去的内容是最先接收的，也叫做 LIFO（Last-In-First-Out），即后进先出法则。而与队列相对应的叫做 FIFO（First-In-First-Out），即先进先出。</p>
 <p>JavaScript 中的数组既可以用作队列，也可以用作栈。它们允许你从首端/末端来添加/删除元素。</p>
 <p>这在计算机科学中，允许这样的操作的数据结构被称为双端队列（deque）。</p>
@@ -468,9 +468,9 @@
 <blockquote>
 <p>请注意，<code>indexOf</code> 和 <code>includes</code> 使用严格相等 <code>===</code> 进行比较。所以，如果我们搜索 <code>false</code>，它会准确找到 <code>false</code> 而不是数字 <code>0</code>。</p>
 <p>如果我们想检查数组中是否包含元素 <code>item</code>，并且不需要知道其确切的索引，那么 <code>arr.includes</code> 是首选。</p>
-<p><code>includes</code>它可以正确处理 <code>NaN</code>，这与 <code>indexOf</code> 不同,这是因为 <code>includes</code> 是在比较晚的时候才被添加到 JavaScript 中的，并且在内部使用了更新了的比较算法。</p>
+<p><span style="color:red"><code>includes</code>它可以正确处理 <code>NaN</code></span>，这与 <code>indexOf</code> 不同,这是因为 <code>includes</code> 是在比较晚的时候才被添加到 JavaScript 中的，并且在内部使用了更新了的比较算法。</p>
 </blockquote>
-<h5 id="find-和findIndex-findLastIndex-方法">find()和findIndex()/findLastIndex()方法</h5>
+<h5 id="a-id-find-find-和findIndex-findLastIndex-方法-a"><a id="find">find()和findIndex()/findLastIndex()方法</a></h5>
 <p><code>find()</code>与 <code>findIndex()</code>方法均接受两个参数：一个回调函数，一个可选值用于指定回调函数内部的 this。</p>
 <p>该回调函数可接受三个参数：数组的某个元素，该元素对应的索引位置，以及该数组本身。</p>
 <p>该回调函数应当在给定的元素满足你定义的条件时返回 <code>true</code>，而 <code>find()</code>和 <code>findIndex()</code>方法均会在回调函数<strong>第一次返回 true 时停止查找</strong>。</p>
@@ -505,68 +505,240 @@
 <p>为了解决上述问题，sort()方法可以接收一个比较函数作为参数，以便我们指定哪个值位于哪个值的前面。</p>
 <p>比较函数接收两个参数，如果第一个参数应该位于第二个之前则返回一个负数，如果两个参数相等则返回 0，如果第一个参数应该位于第二个之后则返回一个正数。以下就是一个简单的比较函数：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">compareNumeric</span>(<span class="hljs-params">a, b</span>) &#123;<br>  <span class="hljs-keyword">if</span> (a &gt; b) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>; <span class="hljs-comment">// 如果第一个值比第二个值大</span><br>  <span class="hljs-keyword">if</span> (a == b) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; <span class="hljs-comment">// 如果两个值相等</span><br>  <span class="hljs-keyword">if</span> (a &lt; b) <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>; <span class="hljs-comment">// 如果第一个值比第二个值小</span><br>&#125;<br><br><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">13</span>, <span class="hljs-number">24</span>, <span class="hljs-number">51</span>, <span class="hljs-number">3</span>];<br>arr.<span class="hljs-title function_">sort</span>(compareNumeric);<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr);<span class="hljs-comment">//[3, 13, 24, 51]</span><br><br><span class="hljs-comment">//箭头函数比较数字</span><br>arr.<span class="hljs-title function_">sort</span>( <span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> a - b );<span class="hljs-comment">//简写</span><br><br><span class="hljs-comment">//使用 localeCompare for strings</span><br><span class="hljs-keyword">let</span> countries = [<span class="hljs-string">&#x27;Österreich&#x27;</span>, <span class="hljs-string">&#x27;Andorra&#x27;</span>, <span class="hljs-string">&#x27;Vietnam&#x27;</span>];<br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>( countries.<span class="hljs-title function_">sort</span>( <span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> a &gt; b ? <span class="hljs-number">1</span> : -<span class="hljs-number">1</span>) ); <span class="hljs-comment">// Andorra, Vietnam, Österreich（错的）</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>( countries.<span class="hljs-title function_">sort</span>( <span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> a.<span class="hljs-title function_">localeCompare</span>(b) ) ); <span class="hljs-comment">// Andorra,Österreich,Vietnam（对的！）</span><br></code></pre></td></tr></table></figure>
+<h3 id="三、转换方法">三、转换方法</h3>
+<p>常见的转换方法有：</p>
+<ul>
+<li>split()</li>
+<li>join()</li>
+<li>toLocaleString() 和 toString()</li>
+<li>valueOf()</li>
+</ul>
+<h5 id="split-方法">split()方法</h5>
+<p><code>str.split(delim)</code> 方法通过给定的分隔符 delim 将字符串分割成一个数组。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> names = <span class="hljs-string">&#x27;Bilbo, Gandalf, Nazgul&#x27;</span>;<br><span class="hljs-keyword">let</span> arr = names.<span class="hljs-title function_">split</span>(<span class="hljs-string">&#x27;, &#x27;</span>)<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr);<br></code></pre></td></tr></table></figure>
+<p><code>split()</code> 方法有一个可选的第二个数字参数 —— 对数组长度的限制。如果提供了，那么额外的元素会被忽略。但实际上它很少使用：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> arr = <span class="hljs-string">&#x27;Bilbo, Gandalf, Nazgul, Saruman&#x27;</span>.<span class="hljs-title function_">split</span>(<span class="hljs-string">&#x27;, &#x27;</span>, <span class="hljs-number">3</span>);<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr);<span class="hljs-comment">//[&#x27;Bilbo&#x27;, &#x27;Gandalf&#x27;, &#x27;Nazgul&#x27;]</span><br></code></pre></td></tr></table></figure>
+<p><code>str.split()</code> 方法很有用,常见的用途有:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//csv字符串转数组</span><br><span class="hljs-string">&#x27;a,b,c&#x27;</span>.<span class="hljs-title function_">split</span>(<span class="hljs-string">&#x27;,&#x27;</span>);<span class="hljs-comment">//[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]</span><br><br><span class="hljs-comment">//获取url路径、参数</span><br><span class="hljs-string">&#x27;http://www.example.com/a/b?x=1&amp;y=2&#x27;</span>.<span class="hljs-title function_">split</span>(<span class="hljs-string">&#x27;/&#x27;</span>);<br><span class="hljs-comment">//[&#x27;http:&#x27;, &#x27;&#x27;, &#x27;www.example.com&#x27;, &#x27;a&#x27;, &#x27;b?x=1&amp;y=2&#x27;]</span><br><br><span class="hljs-comment">//将字符串转化为数组以进一步处理</span><br><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;  a b    c   d  &#x27;</span>;<br>str.<span class="hljs-title function_">split</span>(<span class="hljs-string">&#x27; &#x27;</span>).<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">c</span>=&gt;</span>c!==<span class="hljs-string">&quot;&quot;</span>);<span class="hljs-comment">//[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;]</span><br></code></pre></td></tr></table></figure>
+<h5 id="join-方法-不会改变原数组">==join()方法 - 不会改变原数组==</h5>
+<p><code>array.join([separator])</code>方法用于把数组中的所有元素转换一个字符串，元素是通过指定的分隔符进行分隔的，默认使用逗号作为分隔符。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>];<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr.<span class="hljs-title function_">join</span>());<span class="hljs-comment">//&#x27;1,2,3&#x27;</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr.<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27;-&#x27;</span>));<span class="hljs-comment">//&#x27;1-2-3&#x27;</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr);<span class="hljs-comment">//[1, 2, 3]原数组不变</span><br><span class="hljs-comment">//拼接sql语句</span><br>[<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>].<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27; or &#x27;</span>)  <span class="hljs-comment">// &#x27;a or b or c&#x27;</span><br><br><span class="hljs-comment">//将数组转换为字符串以进行进一步处理</span><br>arr.<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27;&#x27;</span>)+<span class="hljs-string">&#x27;4&#x27;</span>;<span class="hljs-comment">//&#x27;1234&#x27;</span><br></code></pre></td></tr></table></figure>
+<p>通过<strong>join()方法可以实现重复字符串</strong>，只需传入字符串以及重复的次数，就能返回重复后的字符串。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//方法一：ES6新增.repeat() 方法</span><br><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;abc&#x27;</span>;<br>str.<span class="hljs-title function_">repeat</span>(<span class="hljs-number">3</span>);<span class="hljs-comment">//&#x27;abcabcabc&#x27;</span><br><br><span class="hljs-comment">//方法二：es5利用join()方法</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">repeatString</span>(<span class="hljs-params">str,n</span>)&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Array</span>(n+<span class="hljs-number">1</span>).<span class="hljs-title function_">join</span>(str);<br>    <span class="hljs-comment">//逻辑是：建一个可容纳重复次数个数的空数组</span><br>    <span class="hljs-comment">//重复n次，即数组n个分隔符，那么数组长度应为n+1</span><br>    <span class="hljs-comment">//以需要重复的字符串为分隔符分割n个数组空元素，即可将字符串重复n次</span><br>&#125;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">repeatString</span>(<span class="hljs-string">&#x27;abc&#x27;</span>,<span class="hljs-number">3</span>));<span class="hljs-comment">//&#x27;abcabcabc&#x27;</span><br>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>].<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27; |我是-分隔符| &#x27;</span>);<span class="hljs-comment">//&#x27;1 |我是-分隔符| 2 |我是-分隔符| 3&#x27;</span><br></code></pre></td></tr></table></figure>
+<h5 id="valueOf-、toString-和toLocaleString-方法">valueOf()、toString()和toLocaleString() 方法</h5>
+<p><code>Array</code>、<code>Boolean</code>、<code>Object</code>、<code>Number</code>、<code>String</code>等对象都具有<code>valueOf()</code>、<code>toString()</code>、<code>toLocaleString()</code>三个方法，那这三个方法有什么区别？</p>
+<p>1、<strong>先定义对应数据类型变量</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> arr = [<span class="hljs-string">&#x27;1&#x27;</span>,<span class="hljs-string">&#x27;qi&#x27;</span>,<span class="hljs-string">&#x27;he8&#x27;</span>];   <span class="hljs-comment">//数组</span><br><span class="hljs-keyword">let</span> boolean = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Boolean</span>();  <span class="hljs-comment">//布尔值</span><br><span class="hljs-keyword">let</span> obj=&#123;<span class="hljs-title function_">valueOf</span>(<span class="hljs-params"></span>)&#123;<span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;返回自定义的值&#x27;</span>&#125;&#125;;  <span class="hljs-comment">//对象</span><br><span class="hljs-keyword">let</span> objDate = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>();     <span class="hljs-comment">//对象</span><br><span class="hljs-keyword">let</span> num = <span class="hljs-number">258</span>;               <span class="hljs-comment">//数字</span><br><span class="hljs-keyword">let</span> mathe = <span class="hljs-title class_">Math</span>.<span class="hljs-property">PI</span>;         <span class="hljs-comment">//数字   </span><br><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;abc&#x27;</span>;             <span class="hljs-comment">//字符串</span><br></code></pre></td></tr></table></figure>
+<p><strong><span style="color:red"><code>Array</code></span></strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">arr.<span class="hljs-title function_">valueOf</span>();<span class="hljs-comment">// [&#x27;1&#x27;, &#x27;qi&#x27;, &#x27;he8&#x27;]</span><br>arr.<span class="hljs-title function_">toString</span>();<span class="hljs-comment">//&#x27;1,qi,he8&#x27;</span><br>arr.<span class="hljs-title function_">toLocaleString</span>();<span class="hljs-comment">//&#x27;1,qi,he8&#x27;</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>valueOf：返回数组本身(证明数组的原始类型就是其本身)<br>
+toString()：把数组转换为字符串，并返回结果。<br>
+toLocalString()：把数组转换为本地数组，并返回结果（根据本机设置进行本地化）。</p>
+</blockquote>
+<p><strong><span style="color:red"><code>Boolean</code></span></strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">boolean.<span class="hljs-title function_">valueOf</span>();<span class="hljs-comment">//false</span><br>boolean.<span class="hljs-title function_">toString</span>();<span class="hljs-comment">//&#x27;false&#x27;</span><br>boolean.<span class="hljs-title function_">toLocaleString</span>();<span class="hljs-comment">//&#x27;false&#x27;</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>valueOf：返回 Boolean 对象的原始值。<br>
+toString()：根据原始布尔值或者 booleanObject 对象的值返回字符串 “true” 或 “false”。默认为&quot;false&quot;。<br>
+toLocaleString()：Boolean对象没有toLocaleString()方法。但是在Boolean对象上使用这个方法也不会报错。</p>
+</blockquote>
+<p><strong><span style="color:red"><code>Object</code></span></strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js">obj.<span class="hljs-title function_">valueOf</span>();<span class="hljs-comment">//&#x27;返回自定义的值&#x27;</span><br>objDate.<span class="hljs-title function_">valueOf</span>();<span class="hljs-comment">//1686283631986</span><br>obj.<span class="hljs-title function_">toString</span>();<span class="hljs-comment">//&#x27;[object Object]&#x27;</span><br>objDate.<span class="hljs-title function_">toString</span>();<span class="hljs-comment">//&#x27;Fri Jun 09 2023 12:07:11 GMT+0800 (中国标准时间)&#x27;</span><br>obj.<span class="hljs-title function_">toLocaleString</span>();<span class="hljs-comment">//&#x27;[object Object]&#x27;</span><br>objDate.<span class="hljs-title function_">toLocaleString</span>();<span class="hljs-comment">//&#x27;2023/6/9 12:07:11&#x27;</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>valueOf：返回 对象的原始值或者自定义值，Date则以毫秒表示。<br>
+toString()：返回字符串’[object Object]'， Date 则转换为字符串，并返回本地时间。<br>
+toLocalString()：结果同toString()，但是Date则会根据本机规则本地化。</p>
+</blockquote>
+<p><strong><span style="color:red"><code>Number</code></span></strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js">num.<span class="hljs-title function_">valueOf</span>();<span class="hljs-comment">//258</span><br>mathe.<span class="hljs-title function_">valueOf</span>();<span class="hljs-comment">//3.141592653589793</span><br>num.<span class="hljs-title function_">toString</span>();<span class="hljs-comment">//&#x27;258&#x27;</span><br>mathe.<span class="hljs-title function_">toString</span>();<span class="hljs-comment">//&#x27;3.141592653589793&#x27;</span><br>num.<span class="hljs-title function_">toLocaleString</span>();<span class="hljs-comment">//&#x27;258&#x27;</span><br>mathe.<span class="hljs-title function_">toLocaleString</span>();<span class="hljs-comment">//&#x27;3.142&#x27;</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>valueOf：返回一个 Number 对象的基本数字值。<br>
+toString()：把数字转换为字符串，使用指定的基数，默认十进制。<br>
+toLocalString()：把数字转换为字符串，使用本地数字格式。</p>
+</blockquote>
+<p><strong><span style="color:red"><code>String</code></span></strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">str.<span class="hljs-title function_">valueOf</span>();<span class="hljs-comment">//&#x27;abc&#x27;</span><br>str.<span class="hljs-title function_">toString</span>();<span class="hljs-comment">//&#x27;abc&#x27;</span><br>str.<span class="hljs-title function_">toLocaleString</span>();<span class="hljs-comment">//&#x27;abc&#x27;</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>valueOf：返回某个字符串对象的原始值，字符串原始值为其自身。<br>
+toString()：返回字符串。</p>
+<p>toLocaleString()：返回字符串。</p>
+</blockquote>
+<p><strong>总结：</strong></p>
+<blockquote>
+<ol>
+<li>toLocalString()是调用每个数组元素的 toLocaleString() 方法，然后使用<br>
+地区特定的分隔符把生成的字符串连接起来，形成一个字符串。</li>
+<li>toString()方法获取的是String(传统字符串),而toLocaleString()方法获取<br>
+的是LocaleString(本地环境字符串)。</li>
+<li>如果你开发的脚本在世界范围都有人使用，那么将对象转换成字符串时请使用<br>
+toString()方法来完成。</li>
+<li>LocaleString()会根据你机器的本地环境来返回字符串，它和toString()返回的<br>
+值在不同的本地环境下使用的符号会有微妙的变化。</li>
+<li>所以使用toString()是保险的，返回唯一值的方法,它不会因为本地环境的改变而<br>
+发生变化。如果是为了返回时间类型的数据，推荐使用toLocaleString()。若是在后台<br>
+处理字符串，请务必使用toString()。</li>
+<li>valueOf()返回原始值或者对象valueOf()自定义的值</li>
+</ol>
+</blockquote>
+<h3 id="四、迭代方法">四、迭代方法</h3>
+<p>*ES6新语法 IE9及以上才支持。不过可以通过babel转义支持IE低版本。*常用来迭代数组的方法（都不改变原数组）有如下：</p>
+<ul>
+<li>some() - es6新增</li>
+<li>every() - es6新增</li>
+<li>forEach() - es6新增</li>
+<li>for…in</li>
+<li>for…of</li>
+<li>for</li>
+<li>find/findIndex() - es6新增</li>
+<li>filter() - es6新增</li>
+<li>map() - es6新增</li>
+<li>reduce()和 reduceRight()</li>
+<li>flat() 和 flatMap() - es6新增</li>
+<li>entries(),keys() 和 values() - es6新增</li>
+</ul>
+<h5 id="map-不会改变原数组">==map() - 不会改变原数组==</h5>
+<p><code>arr.map</code>方法是最有用和经常使用的方法之一。它对数组的每个元素都调用函数，并<span style="color:red">返回结果数组</span>。它按照原始数组元素顺序依次处理元素，不会改变原数组。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> result = arr.<span class="hljs-title function_">map</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">item, index, array</span>) &#123;<br>  <span class="hljs-comment">// 返回新值而不是当前元素</span><br>&#125;)<br><br><span class="hljs-keyword">let</span> arr=[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>];<br><span class="hljs-keyword">let</span> arr2=arr.<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">item</span>=&gt;</span>item*item);<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr2);<span class="hljs-comment">//[1, 4, 9, 16, 25]</span><br></code></pre></td></tr></table></figure>
+<h5 id="some-every">some()/every()</h5>
+<p>与 <code>map</code> 类似，对数组的每个元素调用函数 <code>fn</code>。如果任何/所有结果为 <code>true</code>，则返回 <code>true</code>，否则返回 <code>false</code>。</p>
+<p>这两个方法的行为类似于 <code>||</code> 和 <code>&amp;&amp;</code> 运算符：如果 <code>fn</code> 返回一个真值，<code>arr.some()</code> 立即返回 <code>true</code> 并停止迭代其余数组项；如果 <code>fn</code> 返回一个假值，<code>arr.every()</code> 立即返回 <code>false</code> 并停止对其余数组项的迭代。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//some()：判断数组中是否存在满足条件的项，只要有一项满足条件，就会返回 true。</span><br><span class="hljs-keyword">let</span> numbers=[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>];<br><span class="hljs-keyword">let</span> result1=numbers.<span class="hljs-title function_">some</span>(<span class="hljs-function">(<span class="hljs-params">item,index,array</span>)=&gt;</span>item&gt;<span class="hljs-number">2</span>);<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(result1);<span class="hljs-comment">//true</span><br><br><span class="hljs-keyword">let</span> result2=numbers.<span class="hljs-title function_">every</span>(<span class="hljs-function">(<span class="hljs-params">item,index,array</span>)=&gt;</span>item&gt;<span class="hljs-number">2</span>);<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(result2);<span class="hljs-comment">//false</span><br></code></pre></td></tr></table></figure>
+<h5 id="forEach">forEach()</h5>
+<p><code>arr.forEach</code>方法允许为数组的每个元素都运行一个函数，这个方法没有返回值，有返回会被抛弃和忽略。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js">arr.<span class="hljs-title function_">forEach</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">item, index, array</span>) &#123;<br>  <span class="hljs-comment">// ... do something with item</span><br>&#125;);<br><br>[<span class="hljs-string">&quot;Bilbo&quot;</span>, <span class="hljs-string">&quot;Gandalf&quot;</span>, <span class="hljs-string">&quot;Nazgul&quot;</span>].<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">item, index, array</span>) =&gt;</span> &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(item, index, array);<br>&#125;);<br></code></pre></td></tr></table></figure>
+<h5 id="for…in-用于对象">for…in - 用于对象</h5>
+<p>for…in循环(<code>index</code>)可用于循环对象和数组,<span style="color:red"><em><strong>但建议只用于循环对象</strong></em></span>,可以用来遍历JSON。</p>
+<figure class="highlight qml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs qml"><span class="hljs-keyword">let</span> arr = [<br>        &#123;<span class="hljs-attribute">id:</span><span class="hljs-string"> 1, name</span>: <span class="hljs-string">&quot;John&quot;</span>&#125;,<br>        &#123;<span class="hljs-attribute">id:</span><span class="hljs-string"> 2, name</span>: <span class="hljs-string">&quot;Pete&quot;</span>&#125;,<br>        &#123;<span class="hljs-attribute">id:</span><span class="hljs-string"> 3, name</span>: <span class="hljs-string">&quot;Mary&quot;</span>&#125;,<br>      ];<br><span class="hljs-keyword">let</span> arrNew = [];<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> index <span class="hljs-keyword">in</span> arr)&#123;<br>     arrNew.push(arr[index].id);<br>&#125;<br><span class="hljs-built_in">console</span>.log(arrNew);<span class="hljs-comment">//[1,2,3,4]</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>技术上来讲，因为数组也是对象，所以使用 <code>for..in</code> 也是可以的，但会有一些潜在问题存在：</p>
+<p>​    1、<code>for..in</code> 循环会遍历 <strong>所有属性</strong>，不仅仅是这些数字属性。</p>
+<p>​    2、<code>for..in</code> 循环适用于普通对象，并且做了对应的优化。但是不适用于数组，因此速度要慢 10-100 倍。</p>
+<p>通常来说，我们不应该用 <code>for..in</code> 来处理数组。</p>
+</blockquote>
+<h5 id="for…of">for…of</h5>
+<p><code>for..of</code> 不能获取当前元素的索引，只是获取元素值，推荐用于循环对象,大多数情况是够用的。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> arr = [<br>        &#123;<span class="hljs-attr">id</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;John&quot;</span>&#125;,<br>        &#123;<span class="hljs-attr">id</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Pete&quot;</span>&#125;,<br>        &#123;<span class="hljs-attr">id</span>: <span class="hljs-number">3</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Mary&quot;</span>&#125;,<br>];<br><span class="hljs-comment">// key()是对键名的遍历；</span><br><span class="hljs-comment">// value()是对键值的遍历；</span><br><span class="hljs-comment">// entries()是对键值对的遍历；</span><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> item <span class="hljs-keyword">of</span> arr) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(item);<span class="hljs-comment">//&#123;id: 1, name: &#x27;John&#x27;&#125;</span><br>&#125;<br><span class="hljs-comment">// 输出数组索引</span><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> item <span class="hljs-keyword">of</span> arr.<span class="hljs-title function_">keys</span>()) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(item); <span class="hljs-comment">//0</span><br>&#125;<br><span class="hljs-comment">// 输出索引和内容</span><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> [item, val] <span class="hljs-keyword">of</span> arr.<span class="hljs-title function_">entries</span>()) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">table</span>(item + <span class="hljs-string">&quot;:&quot;</span> + val); <span class="hljs-comment">//0:[object Object]</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<h5 id="for">for</h5>
+<p>原生实现方式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> arr = [<br>        &#123;<span class="hljs-attr">id</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;John&quot;</span>&#125;,<br>        &#123;<span class="hljs-attr">id</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Pete&quot;</span>&#125;,<br>        &#123;<span class="hljs-attr">id</span>: <span class="hljs-number">3</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Mary&quot;</span>&#125;,<br>];<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i=<span class="hljs-number">0</span>;i&lt;arr.<span class="hljs-property">length</span>;i++ )&#123;<br>    <span class="hljs-keyword">const</span> item = arr[i];<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(item);<br>&#125;<br></code></pre></td></tr></table></figure>
+<h5 id="find-findIndex">find/findIndex()</h5>
+<p><a href="#find">点击查看详情</a></p>
+<h5 id="filter">filter()</h5>
+<p><code>find</code> 方法搜索的是使函数返回 <code>true</code> 的第一个（单个）元素。</p>
+<p>如果需要匹配的有很多，我们可以使用 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Array/filter">arr.filter(fn)</a>。</p>
+<p>语法与 <code>find</code> 大致相同，但是 <code>filter</code> <span style="color:red">返回的是所有匹配元素组成的数组</span>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> results = arr.<span class="hljs-title function_">filter</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">item, index, array</span>) &#123;<br>  <span class="hljs-comment">// 如果 true item 被 push 到 results，迭代继续</span><br>  <span class="hljs-comment">// 如果什么都没找到，则返回空数组</span><br>&#125;);<br><br><span class="hljs-keyword">let</span> users = [<br>  &#123;<span class="hljs-attr">id</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;John&quot;</span>&#125;,<br>  &#123;<span class="hljs-attr">id</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Pete&quot;</span>&#125;,<br>  &#123;<span class="hljs-attr">id</span>: <span class="hljs-number">3</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Mary&quot;</span>&#125;<br>];<br><span class="hljs-keyword">let</span> someUsers = users.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> item.<span class="hljs-property">id</span> &lt; <span class="hljs-number">3</span>);<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(someUsers.<span class="hljs-property">length</span>);<span class="hljs-comment">//2</span><br></code></pre></td></tr></table></figure>
+<h5 id="reduce-reduceRight">reduce()/reduceRight()</h5>
+<blockquote>
+<p>当我们需要遍历一个数组时 —— 我们可以使用 <code>forEach</code>，<code>for</code> 或 <code>for..of</code>。</p>
+<p>当我们需要遍历并返回每个元素的数据时 —— 我们可以使用 <code>map</code>。</p>
+</blockquote>
+<p><code>reduce()</code>方法从数组的第一项开始，逐个遍历到最后。<code>reduceRight()</code>则从数组的最后一项开始，向前遍历到第一项。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> value = arr.<span class="hljs-title function_">reduce</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">accumulator, item, index, array</span>) &#123;<br>  <span class="hljs-comment">// ...</span><br>&#125;, [initial]);<br></code></pre></td></tr></table></figure>
+<p>该函数一个接一个地应用于所有数组元素，并将其结果“搬运（carry on）”到下一个调用。</p>
+<p>参数：</p>
+<ul>
+<li><code>accumulator</code> —— 是上一个函数调用的结果，第一次等于 <code>initial</code>（如果提供了 <code>initial</code> 的话）。</li>
+<li><code>item</code> —— 当前的数组元素。</li>
+<li><code>index</code> —— 当前索引。</li>
+<li><code>arr</code> —— 数组本身。</li>
+</ul>
+<p>应用函数时，上一个函数调用的结果将作为第一个参数传递给下一个函数。</p>
+<p>因此，第一个参数本质上是累加器，用于存储所有先前执行的组合结果。最后，它成为 <code>reduce</code> 的结果。</p>
+<p>这两个方法都会实现迭代数组的所有项(即累加器)，然后构建<span style="color:red">一个最终返回的值</span>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>];<br><span class="hljs-keyword">let</span> result = arr.<span class="hljs-title function_">reduce</span>(<span class="hljs-function">(<span class="hljs-params">sum, current</span>) =&gt;</span> sum + current, <span class="hljs-number">0</span>);<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(result); <span class="hljs-comment">// 15</span><br><span class="hljs-comment">//如果没有初始值，那么 reduce 会将数组的第一个元素作为初始值，并从第二个元素开始迭代。也可理解为如果没有初始值，则初始值为0</span><br></code></pre></td></tr></table></figure>
+<p>传递给 <code>reduce</code> 的函数仅使用了 2 个参数，通常这就足够了。</p>
+<h5 id="u-flat-flatMap-u-不会改变原数组">==<u>flat()/flatMap()</u> - 不会改变原数组==</h5>
+<p>flat() 方法会按照一个可指定的深度递归遍历数组，并将所有元素与遍历到的子数组中的元素合并为一个新数组返回。</p>
+<p>该方法返回一个新数组，对原数据没有影响。</p>
+<p><strong>参数：</strong> 指定要提取嵌套数组的结构深度，默认值为 1。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> arr1 = [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, [<span class="hljs-number">3</span>, <span class="hljs-number">4</span>]];<br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr1.<span class="hljs-title function_">flat</span>());<br><span class="hljs-comment">// expected output: [0, 1, 2, 3, 4]</span><br><br><span class="hljs-keyword">const</span> arr2 = [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, [[[<span class="hljs-number">3</span>, <span class="hljs-number">4</span>]]]];<br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr2.<span class="hljs-title function_">flat</span>(<span class="hljs-number">2</span>));<br><span class="hljs-comment">// expected output: [0, 1, 2, [3, 4]]</span><br><br><span class="hljs-comment">//使用 Infinity，可展开任意深度的嵌套数组</span><br><span class="hljs-keyword">var</span> arr4 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, [<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, [<span class="hljs-number">5</span>, <span class="hljs-number">6</span>, [<span class="hljs-number">7</span>, <span class="hljs-number">8</span>, [<span class="hljs-number">9</span>, <span class="hljs-number">10</span>]]]]];<br>arr4.<span class="hljs-title function_">flat</span>(<span class="hljs-title class_">Infinity</span>);<br><span class="hljs-comment">// [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</span><br><br><span class="hljs-comment">// 扁平化数组空项,如果原数组有空位，flat()方法会跳过空位</span><br><span class="hljs-keyword">var</span> arr4 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, , <span class="hljs-number">4</span>, <span class="hljs-number">5</span>];<br>arr4.<span class="hljs-title function_">flat</span>();<br><span class="hljs-comment">// [1, 2, 4, 5]</span><br></code></pre></td></tr></table></figure>
+<p><code>flatMap()</code>方法对原数组的每个成员执行一个函数，相当于执行Array.prototype.map(),然后<strong>对返回值组成的数组执行flat()方法</strong>。</p>
+<p>该方法返回一个新数组，不改变原数组。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 相当于 [[2, 4], [3, 6], [4, 8]].flat()</span><br>[<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>].<span class="hljs-title function_">flatMap</span>(<span class="hljs-function">(<span class="hljs-params">x</span>) =&gt;</span> [x, x * <span class="hljs-number">2</span>])<br><span class="hljs-comment">// [2, 4, 3, 6, 4, 8]</span><br></code></pre></td></tr></table></figure>
+<h5 id="u-entries-、keys-、values-u"><strong><u>entries()、keys()、values()</u></strong></h5>
+<p>entries()，keys()和values() —— 用于遍历数组。它们都返回一个遍历器对象，可以用for…of循环进行遍历</p>
+<p>区别是<strong>keys()是对键名的遍历</strong>、<strong>values()是对键值的遍历</strong>，<strong>entries()是对键值对的遍历</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> index <span class="hljs-keyword">of</span> [<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>].<span class="hljs-title function_">keys</span>()) &#123;  <br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(index);  <br>&#125;  <br><span class="hljs-comment">// 0  </span><br><span class="hljs-comment">// 1  </span><br><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> elem <span class="hljs-keyword">of</span> [<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>].<span class="hljs-title function_">values</span>()) &#123;  <br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(elem);  <br>&#125;  <br><span class="hljs-comment">// &#x27;a&#x27;  </span><br><span class="hljs-comment">// &#x27;b&#x27;  </span><br><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> [index, elem] <span class="hljs-keyword">of</span> [<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>].<span class="hljs-title function_">entries</span>()) &#123;  <br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(index, elem);  <br>&#125;  <br><span class="hljs-comment">// 0 &quot;a&quot;  </span><br><span class="hljs-comment">// 1 &quot;b&quot; </span><br></code></pre></td></tr></table></figure>
+<p>如果不使用for…of循环，可以手动调用遍历器对象的<strong>next方法</strong>，进行遍历。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> letter = [<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>];  <br><span class="hljs-keyword">let</span> entries = letter.<span class="hljs-title function_">entries</span>();  <br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(entries.<span class="hljs-title function_">next</span>().<span class="hljs-property">value</span>); <span class="hljs-comment">// [0, &#x27;a&#x27;]  </span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(entries.<span class="hljs-title function_">next</span>().<span class="hljs-property">value</span>); <span class="hljs-comment">// [1, &#x27;b&#x27;]  </span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(entries.<span class="hljs-title function_">next</span>().<span class="hljs-property">value</span>); <span class="hljs-comment">// [2, &#x27;c&#x27;] </span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p><strong><code>next()</code></strong> 方法返回一个包含属性 <code>done</code> 和 <code>value</code> 的对象。该方法也可以通过接受一个参数用以向生成器传值。</p>
+<p>返回的<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object">对象</a>包含两个属性：</p>
+<ul>
+<li>
+<p><code>done</code></p>
+<p>如果迭代器超过迭代序列的末尾，则值为 <code>true</code>。在这种情况下，<code>value</code> 可选地指定迭代器的返回值。</p>
+<p>如果迭代器能够生成序列中的下一个值，则值为 <code>false</code>。这相当于没有完全指定 <code>done</code> 属性。</p>
+</li>
+<li>
+<p><code>value</code> - 迭代器返回的任意的 JavaScript 值。当 <code>done</code> 的值为 <code>true</code> 时可以忽略该值。</p>
+</li>
+</ul>
+</blockquote>
 
-
+              
             </div>
             <hr/>
             <div>
               <div class="post-metas my-3">
-
+  
     <div class="post-meta mr-3 d-flex align-items-center">
       <i class="iconfont icon-category"></i>
-
+      
 
 <span class="category-chains">
-
-
-
+  
+  
+    
       <span class="category-chain">
-
+        
   <a href="/categories/JavaScript/" class="category-chain-item">JavaScript</a>
-
-
+  
+  
 
       </span>
-
-
-
+    
+  
+    
       <span class="category-chain">
-
+        
   <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">学习笔记</a>
-
-
+  
+  
     <span>></span>
-
+    
   <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/js/" class="category-chain-item">js</a>
+  
+  
 
-
-
-
+  
 
       </span>
-
-
+    
+  
 </span>
 
     </div>
-
-
+  
+  
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
-
+      
         <a href="/tags/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">#数据类型</a>
-
+      
         <a href="/tags/array/">#array</a>
-
+      
         <a href="/tags/%E6%95%B0%E7%BB%84/">#数组</a>
-
+      
     </div>
-
+  
 </div>
 
 
-
-
+              
+  
 
   <div class="license-box my-3">
     <div class="license-title">
@@ -574,32 +746,32 @@
       <div>http://example.com/2023/06/07/Javascript数组详解/</div>
     </div>
     <div class="license-meta">
-
+      
         <div class="license-meta-item">
           <div>作者</div>
           <div>silentblue</div>
         </div>
-
-
+      
+      
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
           <div>2023年6月7日</div>
         </div>
-
-
+      
+      
       <div class="license-meta-item">
         <div>许可协议</div>
         <div>
-
-
-
+          
+            
+            
               <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
               <span class="hint--top hint--rounded" aria-label="BY - 署名">
                 <i class="iconfont icon-by"></i>
               </span>
               </a>
-
-
+            
+          
         </div>
       </div>
     </div>
@@ -608,29 +780,29 @@
 
 
 
-
+              
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
-
-
+                    
+                    
                   </article>
                   <article class="post-next col-6">
-
-
+                    
+                    
                       <a href="/2022/06/19/JavaScript%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%B5%85%E6%9E%90/" title="JavaScript的数据类型浅析">
                         <span class="hidden-mobile">JavaScript的数据类型浅析</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
-
+                    
                   </article>
                 </div>
-
+              
             </div>
 
-
+            
   <article id="comments" lazyload>
-
+    
   <div id="valine"></div>
   <script type="text/javascript">
     Fluid.utils.loadComments('#valine', function() {
@@ -663,7 +835,7 @@
     </div>
 
     <div class="side-col d-none d-lg-block col-lg-2">
-
+      
   <aside class="sidebar" style="margin-left: -1rem">
     <div id="toc">
   <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
@@ -683,38 +855,38 @@
 
 
 
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
 
 
 
 
 
 
+    
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
       <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
         <i class="iconfont icon-arrowup" aria-hidden="true"></i>
       </a>
+    
 
-
-
+    
       <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
@@ -736,52 +908,52 @@
   </div>
 </div>
 
+    
 
-
-
+    
   </main>
 
   <footer>
     <div class="footer-inner">
-
+  
     <div class="footer-content">
-       a note book.
+       a note book. 
     </div>
-
-
+  
+  
     <div class="statistics">
+  
+  
 
-
-
-
-
+  
+    
       <span id="leancloud-site-pv-container" style="display: none">
-        总访问量
+        总访问量 
         <span id="leancloud-site-pv"></span>
          次
       </span>
-
-
+    
+    
       <span id="leancloud-site-uv-container" style="display: none">
-        总访客数
+        总访客数 
         <span id="leancloud-site-uv"></span>
          人
       </span>
+    
+    
 
-
-
-
+  
 </div>
 
-
-
-
+  
+  
+  
 </div>
 
   </footer>
 
   <!-- Scripts -->
-
+  
   <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
   <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
 
@@ -809,42 +981,42 @@
         return;
       }
       var text = subtitle.getAttribute('data-typed-text');
-
+      
         typing(text);
-
+      
     })(window, document);
   </script>
 
 
 
 
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
     <script  src="/js/img-lazyload.js" ></script>
+  
 
 
 
 
-
-
+  
 <script>
   Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
     var toc = jQuery('#toc');
@@ -942,7 +1114,7 @@
 </script>
 
 
-
+  
 <script>
   Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
     window.anchors.options = {
@@ -965,7 +1137,7 @@
 </script>
 
 
-
+  
 <script>
   Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
     Fluid.plugins.fancyBox();
@@ -988,7 +1160,7 @@
 <script  src="/js/boot.js" ></script>
 
 
-
+  
 
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
